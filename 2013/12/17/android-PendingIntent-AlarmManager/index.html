@@ -57,31 +57,19 @@
 
 
 
-<meta name="description" content="#
-2013.12.17
-
-PendingIntent和AlarmManager
-##pendingintent使用的三种情况
-你可以通过getActivity(Context context, int requestCode, Intent intent, int flags)系列方法从系统取得一个用于启动一个Activity的PendingIntent对象可以通过getService(Cont">
+<meta name="description" content="PendingIntent和AlarmManager
+pendingintent使用的三种情况你可以通过getActivity(Context context, int requestCode, Intent intent, int flags)系列方法从系统取得一个用于启动一个Activity的PendingIntent对象可以通过getService(Context context, int">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android启动定时任务">
 <meta property="og:url" content="http://yoursite.com/2013/12/17/android-PendingIntent-AlarmManager/index.html">
 <meta property="og:site_name" content="MS.T Notes">
-<meta property="og:description" content="#
-2013.12.17
-
-PendingIntent和AlarmManager
-##pendingintent使用的三种情况
-你可以通过getActivity(Context context, int requestCode, Intent intent, int flags)系列方法从系统取得一个用于启动一个Activity的PendingIntent对象可以通过getService(Cont">
-<meta property="og:updated_time" content="2016-04-01T03:46:58.638Z">
+<meta property="og:description" content="PendingIntent和AlarmManager
+pendingintent使用的三种情况你可以通过getActivity(Context context, int requestCode, Intent intent, int flags)系列方法从系统取得一个用于启动一个Activity的PendingIntent对象可以通过getService(Context context, int">
+<meta property="og:updated_time" content="2016-04-04T12:34:41.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android启动定时任务">
-<meta name="twitter:description" content="#
-2013.12.17
-
-PendingIntent和AlarmManager
-##pendingintent使用的三种情况
-你可以通过getActivity(Context context, int requestCode, Intent intent, int flags)系列方法从系统取得一个用于启动一个Activity的PendingIntent对象可以通过getService(Cont">
+<meta name="twitter:description" content="PendingIntent和AlarmManager
+pendingintent使用的三种情况你可以通过getActivity(Context context, int requestCode, Intent intent, int flags)系列方法从系统取得一个用于启动一个Activity的PendingIntent对象可以通过getService(Context context, int">
 
 
 
@@ -304,18 +292,11 @@ PendingIntent和AlarmManager
       
 
       
-        <p>#</p>
-<p class="meta">2013.12.17</p>
-
-<p>PendingIntent和AlarmManager</p>
-<p>##pendingintent使用的三种情况</p>
-<p>你可以通过<a href="http://developer.android.com/reference/android/app/PendingIntent.html#getActivity" target="_blank" rel="external">getActivity</a>(Context context, int requestCode, Intent intent, int flags)系列方法从系统取得一个用于启动一个Activity的PendingIntent对象</p><br>可以通过<a href="http://developer.android.com/reference/android/app/PendingIntent.html#getService" target="_blank" rel="external">getService</a>(Context context, int requestCode, Intent intent, int flags)方法从系统取得一个用于启动一个Service的PendingIntent对象<p></p><br>可以通过<a href="http://developer.android.com/reference/android/app/PendingIntent.html#getBroadcast" target="_blank" rel="external">getBroadcast</a>(Context context, int requestCode, Intent intent, int flags)方法从系统取得一个用于向BroadcastReceiver的Intent广播的PendingIntent对象<p></p>
-<p>##pendingIntent的第4个参数</p>
-<p>FLAG_CANCEL_CURRENT:如果当前系统中已经存在一个相同的PendingIntent对象，那么就将先将已有的PendingIntent取消，然后重新生成一个PendingIntent对象。</p>
-<p>FLAG_NO_CREATE:如果当前系统中不存在相同的PendingIntent对象，系统将不会创建该PendingIntent对象而是直接返回null。</p>
-<p>FLAG_ONE_SHOT:该PendingIntent只作用一次。在该PendingIntent对象通过send()方法触发过后，PendingIntent将自动调用cancel()进行销毁，那么如果你再调用send()方法的话，系统将会返回一个SendIntentException。</p>
-<p>FLAG_UPDATE_CURRENT:如果系统中有一个和你描述的PendingIntent对等的PendingInent，那么系统将使用该PendingIntent对象，但是会使用新的Intent来更新之前PendingIntent中的Intent对象数据，例如更新Intent中的Extras。</p>
-<p>##AlarmManger启动定时任务，其常用的方法<br><strong>(1)set(int type,long startTime,PendingIntent pi)；</strong></p><br>    该方法用于设置一次性闹钟，第一个参数表示闹钟类型，第二个参数表示闹钟执行时间，第三个参数表示闹钟响应动作。 <p></p><br><strong>(2)setRepeating(int type,long startTime,long intervalTime,PendingIntent pi)；</strong><p></p><br>    该方法用于设置重复闹钟，第一个参数表示闹钟类型，第二个参数表示闹钟首次执行时间，第三个参数表示闹钟两次执行的间隔时间，第四个参数表示闹钟响应动作。类似JAVA的Timer里面scheduleAtFixedRate(TimerTask task, long delay, long period)：以近似固定的时间间隔（由指定的周期分隔）进行后续执行。在固定速率执行中，根据已安排的初始执行时间来安排每次执行。如果由于任何原因（如垃圾回收或其他后台活动）而延迟了某次执行，则将快速连续地出现两次或更多的执行，从而使后续执行能够“追赶上来”。从长远来看，执行的频率将正好是指定周期的倒数（假定 Object.wait(long) 所依靠的系统时钟是准确的）。<p></p><br><strong>(3)setInexactRepeating（int type,long startTime,long intervalTime,PendingIntent pi）</strong> <p></p><br>    该方法也用于设置重复闹钟，与第二个方法相似，不过其两个闹钟执行的间隔时间不是固定的而已。它相对而言更节能（power-efficient）一些，因为系统可能会将几个差不多的闹钟合并为一个来执行，减少设备的唤醒次数。 有点类似JAVA的Timer里面schedule(TimerTask task, Date firstTime, long period)：根据前一次执行的实际执行时间来安排每次执行。如果由于任何原因（如垃圾回收或其他后台活动）而延迟了某次执行，则后续执行也将被延迟。在长期运行中，执行的频率一般要稍慢于指定周期的倒数（假定 Object.wait(long) 所依靠的系统时钟是准确的）。<p></p><br><strong>(4)cancel(PendingIntent operation)</strong> <p></p><br>    取消一个设置的闹钟<p></p><br><strong>(5)setTimeZone(String timeZone)</strong><p></p><br>    设置系统的默认时区。需要android.permission.SET_TIME_ZONE权限<p></p>
+        <p>PendingIntent和AlarmManager</p>
+<h2 id="pendingintent使用的三种情况"><a href="#pendingintent使用的三种情况" class="headerlink" title="pendingintent使用的三种情况"></a>pendingintent使用的三种情况</h2><p>你可以通过<a href="http://developer.android.com/reference/android/app/PendingIntent.html#getActivity" target="_blank" rel="external">getActivity</a>(Context context, int requestCode, Intent intent, int flags)系列方法从系统取得一个用于启动一个Activity的PendingIntent对象<br>可以通过<a href="http://developer.android.com/reference/android/app/PendingIntent.html#getService" target="_blank" rel="external">getService</a>(Context context, int requestCode, Intent intent, int flags)方法从系统取得一个用于启动一个Service的PendingIntent对象<br>可以通过<a href="http://developer.android.com/reference/android/app/PendingIntent.html#getBroadcast" target="_blank" rel="external">getBroadcast</a>(Context context, int requestCode, Intent intent, int flags)方法从系统取得一个用于向BroadcastReceiver的Intent广播的PendingIntent对象</p>
+<h2 id="pendingIntent的第4个参数"><a href="#pendingIntent的第4个参数" class="headerlink" title="pendingIntent的第4个参数"></a>pendingIntent的第4个参数</h2><p>FLAG_CANCEL_CURRENT:如果当前系统中已经存在一个相同的PendingIntent对象，那么就将先将已有的PendingIntent取消，然后重新生成一个PendingIntent对象。<br>FLAG_NO_CREATE:如果当前系统中不存在相同的PendingIntent对象，系统将不会创建该PendingIntent对象而是直接返回null。<br>FLAG_ONE_SHOT:该PendingIntent只作用一次。在该PendingIntent对象通过send()方法触发过后，PendingIntent将自动调用cancel()进行销毁，那么如果你再调用send()方法的话，系统将会返回一个SendIntentException。<br>FLAG_UPDATE_CURRENT:如果系统中有一个和你描述的PendingIntent对等的PendingInent，那么系统将使用该PendingIntent对象，但是会使用新的Intent来更新之前PendingIntent中的Intent对象数据，例如更新Intent中的Extras。</p>
+<a id="more"></a>
+<h2 id="AlarmManger启动定时任务，其常用的方法"><a href="#AlarmManger启动定时任务，其常用的方法" class="headerlink" title="AlarmManger启动定时任务，其常用的方法"></a>AlarmManger启动定时任务，其常用的方法</h2><p><strong>(1)set(int type,long startTime,PendingIntent pi)；</strong><br>该方法用于设置一次性闹钟，第一个参数表示闹钟类型，第二个参数表示闹钟执行时间，第三个参数表示闹钟响应动作。<br><strong>(2)setRepeating(int type,long startTime,long intervalTime,PendingIntent pi)；</strong><br>该方法用于设置重复闹钟，第一个参数表示闹钟类型，第二个参数表示闹钟首次执行时间，第三个参数表示闹钟两次执行的间隔时间，第四个参数表示闹钟响应动作。类似JAVA的Timer里面scheduleAtFixedRate(TimerTask task, long delay, long period)：以近似固定的时间间隔（由指定的周期分隔）进行后续执行。在固定速率执行中，根据已安排的初始执行时间来安排每次执行。如果由于任何原因（如垃圾回收或其他后台活动）而延迟了某次执行，则将快速连续地出现两次或更多的执行，从而使后续执行能够“追赶上来”。从长远来看，执行的频率将正好是指定周期的倒数（假定 Object.wait(long) 所依靠的系统时钟是准确的）。<br><strong>(3)setInexactRepeating（int type,long startTime,long intervalTime,PendingIntent pi）</strong><br>该方法也用于设置重复闹钟，与第二个方法相似，不过其两个闹钟执行的间隔时间不是固定的而已。它相对而言更节能（power-efficient）一些，因为系统可能会将几个差不多的闹钟合并为一个来执行，减少设备的唤醒次数。 有点类似JAVA的Timer里面schedule(TimerTask task, Date firstTime, long period)：根据前一次执行的实际执行时间来安排每次执行。如果由于任何原因（如垃圾回收或其他后台活动）而延迟了某次执行，则后续执行也将被延迟。在长期运行中，执行的频率一般要稍慢于指定周期的倒数（假定 Object.wait(long) 所依靠的系统时钟是准确的）。<br><strong>(4)cancel(PendingIntent operation)</strong><br>取消一个设置的闹钟<br><strong>(5)setTimeZone(String timeZone)</strong><br>设置系统的默认时区。需要android.permission.SET_TIME_ZONE权限</p>
 <p>注解：使用alarmManager启动service时，用service的action（service在manifest中声明多个action）来启动，防止用service.class导致pendingintent相互覆盖影响的情况！重要！</p>
 
       
@@ -334,16 +315,16 @@ PendingIntent和AlarmManager
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2013/12/17/Android-not-receive-broadcast/" rel="next" title="Android4.0开机广播">
-                <i class="fa fa-chevron-left"></i> Android4.0开机广播
+              <a href="/2013/12/13/how-github-use/" rel="next" title="Github简单使用记录">
+                <i class="fa fa-chevron-left"></i> Github简单使用记录
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2013/12/18/parser-json-error/" rel="prev" title="Android2.3解析Json出错">
-                Android2.3解析Json出错 <i class="fa fa-chevron-right"></i>
+              <a href="/2013/12/17/Android-not-receive-broadcast/" rel="prev" title="Android4.0开机广播">
+                Android4.0开机广播 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -416,7 +397,7 @@ PendingIntent和AlarmManager
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -450,7 +431,7 @@ PendingIntent和AlarmManager
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pendingintent使用的三种情况"><span class="nav-number">1.</span> <span class="nav-text">pendingintent使用的三种情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pendingIntent的第4个参数"><span class="nav-number">2.</span> <span class="nav-text">pendingIntent的第4个参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AlarmManger启动定时任务，其常用的方法"><span class="nav-number">3.</span> <span class="nav-text">AlarmManger启动定时任务，其常用的方法</span></a></li></ol></div>
             
           </div>
         </section>
@@ -468,7 +449,7 @@ PendingIntent和AlarmManager
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2014 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>

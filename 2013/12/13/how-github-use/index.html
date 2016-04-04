@@ -57,34 +57,19 @@
 
 
 
-<meta name="description" content="#
-2013.12.13
-
-git配置命令
-1234git config --global user.name &quot;name&quot;git config --global user.email &quot;your.email@gmail.com&quot;git config --global push.default simplegit config --list
-git远程库操作命令 
-1234567891011121">
+<meta name="description" content="git配置命令1234git config --global user.name &quot;name&quot;git config --global user.email &quot;your.email@gmail.com&quot;git config --global push.default simplegit config --list
+git远程库操作命令123456789101112131415161718192021">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Github简单使用记录">
 <meta property="og:url" content="http://yoursite.com/2013/12/13/how-github-use/index.html">
 <meta property="og:site_name" content="MS.T Notes">
-<meta property="og:description" content="#
-2013.12.13
-
-git配置命令
-1234git config --global user.name &quot;name&quot;git config --global user.email &quot;your.email@gmail.com&quot;git config --global push.default simplegit config --list
-git远程库操作命令 
-1234567891011121">
-<meta property="og:updated_time" content="2016-04-01T03:46:58.637Z">
+<meta property="og:description" content="git配置命令1234git config --global user.name &quot;name&quot;git config --global user.email &quot;your.email@gmail.com&quot;git config --global push.default simplegit config --list
+git远程库操作命令123456789101112131415161718192021">
+<meta property="og:updated_time" content="2016-04-04T12:26:31.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github简单使用记录">
-<meta name="twitter:description" content="#
-2013.12.13
-
-git配置命令
-1234git config --global user.name &quot;name&quot;git config --global user.email &quot;your.email@gmail.com&quot;git config --global push.default simplegit config --list
-git远程库操作命令 
-1234567891011121">
+<meta name="twitter:description" content="git配置命令1234git config --global user.name &quot;name&quot;git config --global user.email &quot;your.email@gmail.com&quot;git config --global push.default simplegit config --list
+git远程库操作命令123456789101112131415161718192021">
 
 
 
@@ -307,18 +292,12 @@ git远程库操作命令
       
 
       
-        <p>#</p>
-<p class="meta">2013.12.13</p>
-
-<p><strong>git配置命令</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"name"</span></span><br><span class="line">git config --global user.email <span class="string">"your.email@gmail.com"</span></span><br><span class="line">git config --global push.default simple</span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-<p><strong>git远程库操作命令</strong> </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> 1 //为本地库创建一个远程库，以--bare为参数，本地库 远程库</span><br><span class="line"> 2 git <span class="built_in">clone</span> --bare . ../remote-repository.git</span><br><span class="line"> 3 </span><br><span class="line"> 4 //<span class="built_in">clone</span>远程库代码，在当前目录拉去全程库的文件，远程库 本地目录</span><br><span class="line"> 5 git <span class="built_in">clone</span> ../remote-repository.git . </span><br><span class="line"> 6 //本地库中创建对应远程库的别名</span><br><span class="line"> 7 git remote add origin ../remote-repository.git</span><br><span class="line"> 8 git remote//列出远程库</span><br><span class="line"> 9 git remote -v//显示所有的远程仓库</span><br><span class="line">10 git remote rename github gh//重命名远程仓库</span><br><span class="line">11 git remote rm github//删除远程仓库</span><br><span class="line">12 </span><br><span class="line">13 </span><br><span class="line">14 //从远程库拉去代码</span><br><span class="line">15 git pull --rebase</span><br><span class="line">16 //提交代码到远程库</span><br><span class="line">17 git push ../remote-repository.git</span><br><span class="line">18 git push origin</span><br><span class="line">19 </span><br><span class="line">20 //打tag</span><br><span class="line">21 git tag version1.6 -m <span class="string">'version 1.6'</span></span><br><span class="line">22 </span><br><span class="line">23 //解决冲突</span><br><span class="line">24 git mergetool</span><br></pre></td></tr></table></figure>
-<p><strong>git常用操作</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//回退所有的修改（未提交到暂存区）&amp;&amp;删除所有修改（包括在ignore中的文件）</span><br><span class="line">git checkout . &amp;&amp; git clean -fdx</span><br><span class="line">//如果有修改提交到暂存区，回退该修改</span><br><span class="line">git reset --hard</span><br><span class="line">git clean -fdx</span><br><span class="line">// 移除缓存区的所有文件（撤销上次git add）:</span><br><span class="line">git reset HEAD</span><br></pre></td></tr></table></figure>
-<p><strong>github help</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> 1 Global setup:</span><br><span class="line"> 2  Set up git</span><br><span class="line"> 3   git config --global user.name &quot;Your Name&quot;</span><br><span class="line"> 4   git config --global user.email defnngj@gmail.com</span><br><span class="line"> 5       </span><br><span class="line"> 6 Next steps:</span><br><span class="line"> 7   mkdir hibernaet-demo2</span><br><span class="line"> 8   cd hibernaet-demo2</span><br><span class="line"> 9   git init</span><br><span class="line">10   touch README</span><br><span class="line">11   git add README</span><br><span class="line">12   git commit -m &apos;first commit&apos;</span><br><span class="line">13   git remote add origin git@github.com:defnngj/hibernaet-demo2.git</span><br><span class="line">14   git push -u origin master</span><br><span class="line">15 </span><br><span class="line">16 Existing Git Repo?</span><br><span class="line">17   cd existing_git_repo</span><br><span class="line">18   git remote add origin git@github.com:defnngj/hibernaet-demo2.git</span><br><span class="line">19   git push -u origin master</span><br></pre></td></tr></table></figure>
-<p><strong>参考资料</strong></p><br><a href="http://www.cnblogs.com/fnng/archive/2012/01/07/2315685.html" target="_blank" rel="external">git/github初级运用自如</a><p></p><br><a href="https://help.github.com/articles/set-up-git" target="_blank" rel="external">gitHub help</a><p></p><br><a href="http://lishicongli.blog.163.com/blog/static/1468259020132125247302/" target="_blank" rel="external">Git 的origin和master分析</a><p></p><br><a href="http://wuyuans.com/2012/05/github-simple-tutorial/" target="_blank" rel="external">github简单使用教程</a><p></p><br><a href="http://blog.csdn.net/lishuo_os_ds/article/details/8078475" target="_blank" rel="external">GitHub详细教程</a><p></p><br><a href="http://blog.csdn.net/pgmsoul/article/details/7883706" target="_blank" rel="external">git remote</a><p></p><br><a href="http://www.yangzhiping.com/tech/github.html" target="_blank" rel="external">如何高效利用GitHub</a><p></p><p></p>
+        <p><strong>git配置命令</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"name"</span></span><br><span class="line">git config --global user.email <span class="string">"your.email@gmail.com"</span></span><br><span class="line">git config --global push.default simple</span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure></p>
+<p><strong>git远程库操作命令</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//为本地库创建一个远程库，以--bare为参数，本地库 远程库</span><br><span class="line">git <span class="built_in">clone</span> --bare . ../remote-repository.git</span><br><span class="line"></span><br><span class="line">//<span class="built_in">clone</span>远程库代码，在当前目录拉去全程库的文件，远程库 本地目录</span><br><span class="line">git <span class="built_in">clone</span> ../remote-repository.git . </span><br><span class="line">//本地库中创建对应远程库的别名</span><br><span class="line">git remote add origin ../remote-repository.git</span><br><span class="line">git remote//列出远程库</span><br><span class="line">git remote -v//显示所有的远程仓库</span><br><span class="line">git remote rename github gh//重命名远程仓库</span><br><span class="line">git remote rm github//删除远程仓库</span><br><span class="line"></span><br><span class="line">//从远程库拉去代码</span><br><span class="line">git pull --rebase</span><br><span class="line">//提交代码到远程库</span><br><span class="line">git push ../remote-repository.git</span><br><span class="line">git push origin</span><br><span class="line">//打tag</span><br><span class="line">git tag version1.6 -m <span class="string">'version 1.6'</span></span><br><span class="line">//解决冲突</span><br><span class="line">git mergetool</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><strong>git常用操作</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//回退所有的修改（未提交到暂存区）&amp;&amp;删除所有修改（包括在ignore中的文件）</span><br><span class="line">git checkout . &amp;&amp; git clean -fdx</span><br><span class="line">//如果有修改提交到暂存区，回退该修改</span><br><span class="line">git reset --hard</span><br><span class="line">git clean -fdx</span><br><span class="line">// 移除缓存区的所有文件（撤销上次git add）:</span><br><span class="line">git reset HEAD</span><br></pre></td></tr></table></figure></p>
+<p><strong>github help</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Global setup:</span><br><span class="line"> Set up git</span><br><span class="line">  git config --global user.name &quot;Your Name&quot;</span><br><span class="line">  git config --global user.email defnngj@gmail.com</span><br><span class="line">      </span><br><span class="line">Next steps:</span><br><span class="line">  mkdir hibernaet-demo2</span><br><span class="line">  cd hibernaet-demo2</span><br><span class="line">  git init</span><br><span class="line">  touch README</span><br><span class="line">  git add README</span><br><span class="line">  git commit -m &apos;first commit&apos;</span><br><span class="line">  git remote add origin git@github.com:defnngj/hibernaet-demo2.git</span><br><span class="line">  git push -u origin master</span><br><span class="line"></span><br><span class="line">Existing Git Repo?</span><br><span class="line">  cd existing_git_repo</span><br><span class="line">  git remote add origin git@github.com:defnngj/hibernaet-demo2.git</span><br><span class="line">  git push -u origin master</span><br></pre></td></tr></table></figure></p>
+<p><strong>参考资料</strong><br><a href="http://www.cnblogs.com/fnng/archive/2012/01/07/2315685.html" target="_blank" rel="external">git/github初级运用自如</a><br><a href="https://help.github.com/articles/set-up-git" target="_blank" rel="external">gitHub help</a><br><a href="http://lishicongli.blog.163.com/blog/static/1468259020132125247302/" target="_blank" rel="external">Git 的origin和master分析</a><br><a href="http://wuyuans.com/2012/05/github-simple-tutorial/" target="_blank" rel="external">github简单使用教程</a><br><a href="http://blog.csdn.net/lishuo_os_ds/article/details/8078475" target="_blank" rel="external">GitHub详细教程</a><br><a href="http://blog.csdn.net/pgmsoul/article/details/7883706" target="_blank" rel="external">git remote</a><br><a href="http://www.yangzhiping.com/tech/github.html" target="_blank" rel="external">如何高效利用GitHub</a></p>
 
       
     </div>
@@ -340,8 +319,8 @@ git远程库操作命令
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2013/12/17/Android-not-receive-broadcast/" rel="prev" title="Android4.0开机广播">
-                Android4.0开机广播 <i class="fa fa-chevron-right"></i>
+              <a href="/2013/12/17/android-PendingIntent-AlarmManager/" rel="prev" title="Android启动定时任务">
+                Android启动定时任务 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -414,7 +393,7 @@ git远程库操作命令
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -466,7 +445,7 @@ git远程库操作命令
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2014 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
