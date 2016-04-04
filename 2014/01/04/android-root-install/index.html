@@ -1,0 +1,555 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="#
+2014.01.04
+
+说明：用于简单记录。
+1.请求root权限，root权限静默安装
+请求root
+1234567891011121314151617181920212223242526272829303132333435363738394041424344451     // 请求root权限，用这个请求root权限，等待授权管理返回 2     public static boolea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-Root静默安装">
+<meta property="og:url" content="http://yoursite.com/2014/01/04/android-root-install/index.html">
+<meta property="og:site_name" content="MS.T Notes">
+<meta property="og:description" content="#
+2014.01.04
+
+说明：用于简单记录。
+1.请求root权限，root权限静默安装
+请求root
+1234567891011121314151617181920212223242526272829303132333435363738394041424344451     // 请求root权限，用这个请求root权限，等待授权管理返回 2     public static boolea">
+<meta property="og:updated_time" content="2016-04-01T03:46:58.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-Root静默安装">
+<meta name="twitter:description" content="#
+2014.01.04
+
+说明：用于简单记录。
+1.请求root权限，root权限静默安装
+请求root
+1234567891011121314151617181920212223242526272829303132333435363738394041424344451     // 请求root权限，用这个请求root权限，等待授权管理返回 2     public static boolea">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android-Root静默安装 | MS.T Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MS.T Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android-Root静默安装
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-01-04T00:00:00+08:00" content="2014-01-04">
+              2014-01-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#</p>
+<p class="meta">2014.01.04</p>
+
+<p>说明：用于简单记录。</p>
+<p><strong>1.请求root权限，root权限静默安装</strong></p>
+<p>请求root</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>     <span class="comment">// 请求root权限，用这个请求root权限，等待授权管理返回</span></span><br><span class="line"> <span class="number">2</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">upgradeRootPermission2</span><span class="params">(String pkgCodePath)</span> </span>&#123;</span><br><span class="line"> <span class="number">3</span>         String cmd=<span class="string">"chmod 777 "</span> + pkgCodePath;</span><br><span class="line"> <span class="number">4</span>         Process process = <span class="keyword">null</span>; </span><br><span class="line"> <span class="number">5</span>         DataOutputStream os = <span class="keyword">null</span>; </span><br><span class="line"> <span class="number">6</span>         BufferedReader br = <span class="keyword">null</span>;</span><br><span class="line"> <span class="number">7</span>         StringBuilder sb = <span class="keyword">null</span>;</span><br><span class="line"> <span class="number">8</span>         <span class="keyword">try</span> &#123;</span><br><span class="line"> <span class="number">9</span>             process = Runtime.getRuntime().exec(<span class="string">"su"</span>);</span><br><span class="line"><span class="number">10</span>             os = <span class="keyword">new</span> DataOutputStream(process.getOutputStream());</span><br><span class="line"><span class="number">11</span>             os.writeBytes(cmd + <span class="string">"\n"</span>);</span><br><span class="line"><span class="number">12</span>             os.writeBytes(<span class="string">"echo return\n"</span>);</span><br><span class="line"><span class="number">13</span>             os.writeBytes(<span class="string">"exit\n"</span>);</span><br><span class="line"><span class="number">14</span>             br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(</span><br><span class="line"><span class="number">15</span>                     process.getInputStream()));</span><br><span class="line"><span class="number">16</span> </span><br><span class="line"><span class="number">17</span>             sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="number">18</span>             String temp = <span class="keyword">null</span>;</span><br><span class="line"><span class="number">19</span>             <span class="keyword">while</span> ((temp = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line"><span class="number">20</span>                 sb.append(temp + <span class="string">"\n"</span>);</span><br><span class="line"><span class="number">21</span>                 CLog.e(<span class="string">"TMS"</span>, <span class="string">"temp=="</span>+temp);</span><br><span class="line"><span class="number">22</span>                 <span class="keyword">if</span> (<span class="string">"return"</span>.equalsIgnoreCase(temp)) &#123;</span><br><span class="line"><span class="number">23</span>                     CLog.e(<span class="string">"TMS"</span>, <span class="string">"----------"</span> + sb.toString());</span><br><span class="line"><span class="number">24</span>                     <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"><span class="number">25</span>                 &#125;</span><br><span class="line"><span class="number">26</span>             &#125;</span><br><span class="line"><span class="number">27</span>             process.waitFor();</span><br><span class="line"><span class="number">28</span>         &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"><span class="number">29</span>             CLog.e(<span class="string">"TMS"</span>, <span class="string">"异常："</span> + e.getMessage());</span><br><span class="line"><span class="number">30</span>         &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line"><span class="number">31</span>             <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="number">32</span>                 <span class="keyword">if</span> (os != <span class="keyword">null</span>) &#123;</span><br><span class="line"><span class="number">33</span>                     os.flush();</span><br><span class="line"><span class="number">34</span>                     os.close();</span><br><span class="line"><span class="number">35</span>                 &#125;</span><br><span class="line"><span class="number">36</span>                 <span class="keyword">if</span> (br != <span class="keyword">null</span>) &#123;</span><br><span class="line"><span class="number">37</span>                     br.close();</span><br><span class="line"><span class="number">38</span>                 &#125;</span><br><span class="line"><span class="number">39</span>                 process.destroy();</span><br><span class="line"><span class="number">40</span>             &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"><span class="number">41</span>                 <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="number">42</span>             &#125;</span><br><span class="line"><span class="number">43</span>         &#125;</span><br><span class="line"><span class="number">44</span>         <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="number">45</span>     &#125;</span><br></pre></td></tr></table></figure>
+<p>root安装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>     <span class="comment">/**</span><br><span class="line"> 2      * 请求ROOT权限后执行命令（最好开启一个线程）</span><br><span class="line"> 3      * <span class="doctag">@param</span> cmd    (pm install -r *.apk)</span><br><span class="line"> 4      * <span class="doctag">@return</span></span><br><span class="line"> 5      */</span></span><br><span class="line"> <span class="number">6</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">installApkInRoot</span><span class="params">(File path, Context context)</span> </span>&#123;</span><br><span class="line"> <span class="number">7</span>         String cmd = <span class="string">"pm install -r "</span> + path + <span class="string">"\n"</span>;</span><br><span class="line"> <span class="number">8</span>         Process process = <span class="keyword">null</span>; </span><br><span class="line"> <span class="number">9</span>         DataOutputStream os = <span class="keyword">null</span>; </span><br><span class="line"><span class="number">10</span>         BufferedReader br = <span class="keyword">null</span>;</span><br><span class="line"><span class="number">11</span>         StringBuilder sb = <span class="keyword">null</span>;</span><br><span class="line"><span class="number">12</span>         <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="number">13</span>             process = Runtime.getRuntime().exec(<span class="string">"su"</span>);</span><br><span class="line"><span class="number">14</span>             os = <span class="keyword">new</span> DataOutputStream(process.getOutputStream());</span><br><span class="line"><span class="number">15</span>             os.writeBytes(cmd + <span class="string">"\n"</span>);</span><br><span class="line"><span class="number">16</span>             os.writeBytes(<span class="string">"exit\n"</span>);</span><br><span class="line"><span class="number">17</span>             br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(</span><br><span class="line"><span class="number">18</span>                     process.getInputStream()));</span><br><span class="line"><span class="number">19</span> </span><br><span class="line"><span class="number">20</span>             sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="number">21</span>             String temp = <span class="keyword">null</span>;</span><br><span class="line"><span class="number">22</span>             <span class="keyword">while</span> ((temp = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line"><span class="number">23</span>                 sb.append(temp + <span class="string">"\n"</span>);</span><br><span class="line"><span class="number">24</span>                 CLog.e(<span class="string">"TMS"</span>, <span class="string">"temp=="</span>+temp);</span><br><span class="line"><span class="number">25</span>                 <span class="keyword">if</span> (<span class="string">"Success"</span>.equalsIgnoreCase(temp)) &#123;</span><br><span class="line"><span class="number">26</span>                     CLog.e(<span class="string">"TMS"</span>, <span class="string">"----------"</span> + sb.toString());</span><br><span class="line"><span class="number">27</span>                     <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"><span class="number">28</span>                 &#125;</span><br><span class="line"><span class="number">29</span>             &#125;</span><br><span class="line"><span class="number">30</span>             process.waitFor();</span><br><span class="line"><span class="number">31</span>         &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"><span class="number">32</span>             CLog.e(<span class="string">"TMS"</span>, <span class="string">"异常："</span> + e.getMessage());</span><br><span class="line"><span class="number">33</span>         &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line"><span class="number">34</span>             <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="number">35</span>                 <span class="keyword">if</span> (os != <span class="keyword">null</span>) &#123;</span><br><span class="line"><span class="number">36</span>                     os.flush();</span><br><span class="line"><span class="number">37</span>                     os.close();</span><br><span class="line"><span class="number">38</span>                 &#125;</span><br><span class="line"><span class="number">39</span>                 <span class="keyword">if</span> (br != <span class="keyword">null</span>) &#123;</span><br><span class="line"><span class="number">40</span>                     br.close();</span><br><span class="line"><span class="number">41</span>                 &#125;</span><br><span class="line"><span class="number">42</span>                 process.destroy();</span><br><span class="line"><span class="number">43</span>             &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"><span class="number">44</span>                 <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="number">45</span>             &#125;</span><br><span class="line"><span class="number">46</span>         &#125;</span><br><span class="line"><span class="number">47</span>         <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="number">48</span>     &#125;</span><br></pre></td></tr></table></figure>
+<p>h2. 2. 永久获取root权限</p>
+<p>实现原理是第一次请求root权限时，将自己编译的su 拷贝到system/bin目录，后续在进行root权限操作时，调用自己的su。</p>
+<p>91手机助手类似如此，一次请求，永久取得root权限。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1</span>     <span class="comment">/**</span><br><span class="line"> 2      * 调用su获取root权限再把zlsu写到system/bin目录下</span><br><span class="line"> 3      * 以便永久获取root权限（一旦获取成功，下次不再调用su）</span><br><span class="line"> 4      * </span><br><span class="line"> 5      * <span class="doctag">@param</span> ctx</span><br><span class="line"> 6      */</span></span><br><span class="line"> <span class="number">7</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">preparezlsu</span><span class="params">(Context ctx)</span> </span>&#123;</span><br><span class="line"> <span class="number">8</span>         <span class="keyword">try</span> &#123;</span><br><span class="line"> <span class="number">9</span>             File zlsu = <span class="keyword">new</span> File(<span class="string">"/system/bin/"</span> + Constants.ROOT_SU);</span><br><span class="line"><span class="number">10</span>             <span class="comment">// if (!zlsu.exists())</span></span><br><span class="line"><span class="number">11</span>             <span class="comment">// &#123;</span></span><br><span class="line"><span class="number">12</span>             <span class="comment">// Toast toast = Toast.makeText(ctx,</span></span><br><span class="line"><span class="number">13</span>             <span class="comment">// "Unable to find /system/bin/zlsu.", Toast.LENGTH_LONG);</span></span><br><span class="line"><span class="number">14</span>             <span class="comment">// toast.show();</span></span><br><span class="line"><span class="number">15</span>             <span class="comment">// return;</span></span><br><span class="line"><span class="number">16</span>             <span class="comment">// &#125;</span></span><br><span class="line"><span class="number">17</span> </span><br><span class="line"><span class="number">18</span>             InputStream suStream = ctx.getResources().openRawResource(</span><br><span class="line"><span class="number">19</span>                     R.raw.zlsu);</span><br><span class="line"><span class="number">20</span>             <span class="comment">/**</span><br><span class="line">21              * 如果zlsu存在，则和raw目录下的zlsu比较大小，大小相同则不替换</span><br><span class="line">22              */</span></span><br><span class="line"><span class="number">23</span>             <span class="keyword">if</span> (zlsu.exists()) &#123;</span><br><span class="line"><span class="number">24</span>                 <span class="keyword">if</span> (zlsu.length() == suStream.available()) &#123;</span><br><span class="line"><span class="number">25</span>                     suStream.close();</span><br><span class="line"><span class="number">26</span>                     <span class="keyword">return</span>;</span><br><span class="line"><span class="number">27</span>                 &#125;</span><br><span class="line"><span class="number">28</span>             &#125;</span><br><span class="line"><span class="number">29</span> </span><br><span class="line"><span class="number">30</span>             <span class="comment">// File superuser = new File("/system/bin/superuser");</span></span><br><span class="line"><span class="number">31</span>             <span class="comment">//</span></span><br><span class="line"><span class="number">32</span>             <span class="comment">// if (superuser.exists())</span></span><br><span class="line"><span class="number">33</span>             <span class="comment">// &#123;</span></span><br><span class="line"><span class="number">34</span>             <span class="comment">// // return device to original state</span></span><br><span class="line"><span class="number">35</span>             <span class="comment">// Process process = Runtime.getRuntime().exec("superuser");</span></span><br><span class="line"><span class="number">36</span>             <span class="comment">// DataOutputStream os = new</span></span><br><span class="line"><span class="number">37</span>             <span class="comment">// DataOutputStream(process.getOutputStream());</span></span><br><span class="line"><span class="number">38</span>             <span class="comment">//</span></span><br><span class="line"><span class="number">39</span>             <span class="comment">// os.writeBytes("mount -oremount,rw /dev/block/mtdblock3 /system\n");</span></span><br><span class="line"><span class="number">40</span>             <span class="comment">// os.writeBytes("busybox cp /system/bin/superuser /system/bin/su\n");</span></span><br><span class="line"><span class="number">41</span>             <span class="comment">// os.writeBytes("busybox chown 0:0 /system/bin/su\n");</span></span><br><span class="line"><span class="number">42</span>             <span class="comment">// os.writeBytes("chmod 4755 /system/bin/su\n");</span></span><br><span class="line"><span class="number">43</span>             <span class="comment">// os.writeBytes("rm /system/bin/superuser\n");</span></span><br><span class="line"><span class="number">44</span>             <span class="comment">// os.writeBytes("exit\n");</span></span><br><span class="line"><span class="number">45</span>             <span class="comment">// os.flush();</span></span><br><span class="line"><span class="number">46</span>             <span class="comment">// &#125;</span></span><br><span class="line"><span class="number">47</span> </span><br><span class="line"><span class="number">48</span>             <span class="comment">/**</span><br><span class="line">49              * 先把zlsu 写到/data/data/com.zl.movepkgdemo中 然后再调用 su 权限 写到</span><br><span class="line">50              * /system/bin目录下</span><br><span class="line">51              */</span></span><br><span class="line"><span class="number">52</span>             <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[suStream.available()];</span><br><span class="line"><span class="number">53</span>             DataInputStream dis = <span class="keyword">new</span> DataInputStream(suStream);</span><br><span class="line"><span class="number">54</span>             dis.readFully(bytes);</span><br><span class="line"><span class="number">55</span>             String pkgPath = ctx.getApplicationContext()</span><br><span class="line"><span class="number">56</span>                     .getPackageName();</span><br><span class="line"><span class="number">57</span>             <span class="comment">// "/data/data/com.zl.movepkgdemo/zlsu"</span></span><br><span class="line"><span class="number">58</span>             String zlsuPath = <span class="string">"/data/data/"</span> + pkgPath + File.separator + Constants.ROOT_SU;</span><br><span class="line"><span class="number">59</span>             File zlsuFileInData = <span class="keyword">new</span> File(zlsuPath);</span><br><span class="line"><span class="number">60</span>             <span class="keyword">if</span>(!zlsuFileInData.exists())&#123;</span><br><span class="line"><span class="number">61</span>                 System.out.println(zlsuPath + <span class="string">" not exist! "</span>);</span><br><span class="line"><span class="number">62</span>                 <span class="keyword">try</span>&#123;</span><br><span class="line"><span class="number">63</span>                 System.out.println(<span class="string">"creating "</span>+zlsuPath + <span class="string">"......"</span>);</span><br><span class="line"><span class="number">64</span>                 zlsuFileInData.createNewFile();</span><br><span class="line"><span class="number">65</span>                 &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line"><span class="number">66</span>                     System.out.println(<span class="string">"create "</span>+zlsuPath + <span class="string">" failed ! "</span>);</span><br><span class="line"><span class="number">67</span>                 &#125;</span><br><span class="line"><span class="number">68</span>                 System.out.println(<span class="string">"create "</span>+zlsuPath + <span class="string">" successfully ! "</span>);</span><br><span class="line"><span class="number">69</span>             &#125;</span><br><span class="line"><span class="number">70</span>             FileOutputStream suOutStream = <span class="keyword">new</span> FileOutputStream(zlsuPath);</span><br><span class="line"><span class="number">71</span>             suOutStream.write(bytes);</span><br><span class="line"><span class="number">72</span>             suOutStream.close();</span><br><span class="line"><span class="number">73</span> </span><br><span class="line"><span class="number">74</span>             Process process = Runtime.getRuntime().exec(<span class="string">"su"</span>);</span><br><span class="line"><span class="number">75</span>             DataOutputStream os = <span class="keyword">new</span> DataOutputStream(</span><br><span class="line"><span class="number">76</span>                     process.getOutputStream());</span><br><span class="line"><span class="number">77</span>             os.writeBytes(<span class="string">"mount -oremount,rw /dev/block/mtdblock3 /system\n"</span>);</span><br><span class="line"><span class="number">78</span> <span class="comment">//            "busybox cp /data/data/com.zl.movepkgdemo/zlsu /system/bin/zlsu \n"</span></span><br><span class="line"><span class="number">79</span>             os.writeBytes(<span class="string">"busybox cp "</span> + zlsuPath + <span class="string">" /system/bin/"</span></span><br><span class="line"><span class="number">80</span>                     + Constants.ROOT_SU + <span class="string">"\n"</span>);</span><br><span class="line"><span class="number">81</span> <span class="comment">//            "busybox chown 0:0 /system/bin/zlsu \n"</span></span><br><span class="line"><span class="number">82</span>             os.writeBytes(<span class="string">"busybox chown 0:0 /system/bin/"</span> + Constants.ROOT_SU</span><br><span class="line"><span class="number">83</span>                     + <span class="string">"\n"</span>);</span><br><span class="line"><span class="number">84</span> <span class="comment">//            "chmod 4755 /system/bin/zlsu \n"</span></span><br><span class="line"><span class="number">85</span>             os.writeBytes(<span class="string">"chmod 4755 /system/bin/"</span> + Constants.ROOT_SU + <span class="string">"\n"</span>);</span><br><span class="line"><span class="number">86</span>             os.writeBytes(<span class="string">"exit\n"</span>);</span><br><span class="line"><span class="number">87</span>             os.flush();</span><br><span class="line"><span class="number">88</span>         &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"><span class="number">89</span> <span class="comment">//            Toast toast = Toast</span></span><br><span class="line"><span class="number">90</span> <span class="comment">//                    .makeText(ctx, e.getMessage(), Toast.LENGTH_LONG);</span></span><br><span class="line"><span class="number">91</span> <span class="comment">//            toast.show();</span></span><br><span class="line"><span class="number">92</span>             System.out.println(<span class="string">"RootUtil preparezlsu: error"</span>);</span><br><span class="line"><span class="number">93</span>             e.printStackTrace();</span><br><span class="line"><span class="number">94</span>         &#125;</span><br><span class="line"><span class="number">95</span>     &#125;</span><br></pre></td></tr></table></figure>
+<p>而后move apk，使用自己的su。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>     <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">movepkg</span><span class="params">(String pkgName)</span> </span>&#123;</span><br><span class="line"> <span class="number">2</span>         <span class="keyword">int</span> result = -<span class="number">100</span>;</span><br><span class="line"> <span class="number">3</span>         PackageInfo info;</span><br><span class="line"> <span class="number">4</span>         String minePkgName = <span class="string">""</span>;</span><br><span class="line"> <span class="number">5</span>         <span class="keyword">try</span> &#123;</span><br><span class="line"> <span class="number">6</span>             minePkgName = getPackageName();</span><br><span class="line"> <span class="number">7</span>             info = getPackageManager().getPackageInfo(pkgName, <span class="number">0</span>);</span><br><span class="line"> <span class="number">8</span>             <span class="keyword">int</span> moveFlag = (info.applicationInfo.flags &amp; ApplicationInfo.FLAG_EXTERNAL_STORAGE) == <span class="number">0</span> ? PackageManager.MOVE_EXTERNAL_MEDIA</span><br><span class="line"> <span class="number">9</span>                     : PackageManager.MOVE_INTERNAL;</span><br><span class="line"><span class="number">11</span>             String classpath = getPackageManager().getPackageInfo(minePkgName,</span><br><span class="line"><span class="number">12</span>                     <span class="number">0</span>).applicationInfo.publicSourceDir;</span><br><span class="line"><span class="number">13</span>             System.out.println(<span class="string">"classPath: "</span> + classpath);</span><br><span class="line"><span class="number">14</span>             String cmd = <span class="string">"movedemo -c 'export CLASSPATH="</span></span><br><span class="line"><span class="number">15</span>                     + classpath</span><br><span class="line"><span class="number">16</span>                     + <span class="string">" &amp;&amp; export LD_LIBRARY_PATH=/vendor/lib:/system/lib &amp;&amp; exec app_process /data/app "</span></span><br><span class="line"><span class="number">17</span>                     + minePkgName + <span class="string">"/MoveUtil "</span> <span class="comment">// /system/bin</span></span><br><span class="line"><span class="number">18</span>                     + pkgName + <span class="string">" "</span> + moveFlag + <span class="string">"'"</span>;</span><br><span class="line"><span class="number">19</span>             String[] progArray = <span class="keyword">new</span> String[] &#123;</span><br><span class="line"><span class="number">20</span>                     Constants.ROOT_SU,</span><br><span class="line"><span class="number">21</span>                     <span class="string">"-c"</span>,</span><br><span class="line"><span class="number">22</span>                     <span class="string">"export CLASSPATH="</span></span><br><span class="line"><span class="number">23</span>                             + classpath</span><br><span class="line"><span class="number">24</span>                             + <span class="string">" &amp;&amp; export LD_LIBRARY_PATH=/vendor/lib:/system/lib &amp;&amp; exec app_process /data/app "</span></span><br><span class="line"><span class="number">25</span>                             + minePkgName + <span class="string">"/util/MoveUtil "</span> <span class="comment">// /system/bin</span></span><br><span class="line"><span class="number">26</span>                             + pkgName + <span class="string">" "</span> + moveFlag &#125;;</span><br><span class="line"><span class="number">27</span>             <span class="comment">// zlsu -c             export CLASSPATH=/data/app/com.zl.movepkgdemo-1.apk &amp;&amp; export LD_LIBRARY_PATH=/vendor/lib:/system/lib</span></span><br><span class="line"><span class="number">28</span>             <span class="comment">//                        &amp;&amp; exec app_process /data/app com.zl.movepkgdemo/util/MoveUtil com.zl.hw moveFlag</span></span><br><span class="line"><span class="number">29</span>             String returnCode = <span class="string">""</span>;</span><br><span class="line"><span class="number">30</span>             returnCode = RootUtil.exeCmd(progArray,</span><br><span class="line"><span class="number">31</span>                     Constants.RETURNCODE_MOVE_PACKAGE);</span><br><span class="line"><span class="number">32</span>             <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="number">33</span>                 System.out.println(<span class="string">"result: "</span> + returnCode);</span><br><span class="line"><span class="number">34</span>                 result = Integer.parseInt(returnCode);</span><br><span class="line"><span class="number">35</span>             &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line"><span class="number">36</span>                 <span class="keyword">return</span> result;</span><br><span class="line"><span class="number">37</span>             &#125;</span><br><span class="line"><span class="number">38</span> </span><br><span class="line"><span class="number">39</span>         &#125; <span class="keyword">catch</span> (NameNotFoundException e) &#123;</span><br><span class="line"><span class="number">40</span>             System.out.println(<span class="string">"MainActivity: movepkg : "</span> + pkgName</span><br><span class="line"><span class="number">41</span>                     + <span class="string">" not found"</span>);</span><br><span class="line"><span class="number">42</span>             e.printStackTrace();</span><br><span class="line"><span class="number">43</span>         &#125;</span><br><span class="line"><span class="number">44</span>         <span class="keyword">return</span> result;</span><br><span class="line"><span class="number">45</span> </span><br><span class="line"><span class="number">46</span>     &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>参考资料：</strong></p>
+<p><a href="http://hold-on.iteye.com/blog/1901152" target="_blank" rel="external">Android应用程序永久获取root权限方法</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/26/android-swiftp-server/" rel="next" title="Android开发-Swiftp服务端移植">
+                <i class="fa fa-chevron-left"></i> Android开发-Swiftp服务端移植
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/01/05/apply-appstore-us-account/" rel="prev" title="AppStore美国区账号">
+                AppStore美国区账号 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="mstian" />
+          <p class="site-author-name" itemprop="name">mstian</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mstian</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
