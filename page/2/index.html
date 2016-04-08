@@ -57,15 +57,15 @@
 
 
 
-<meta name="description">
+<meta name="description" content="求知若饥，虚心若愚">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MS.T Notes">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="MS.T Notes">
-<meta property="og:description">
+<meta property="og:description" content="求知若饥，虚心若愚">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MS.T Notes">
-<meta name="twitter:description">
+<meta name="twitter:description" content="求知若饥，虚心若愚">
 
 
 
@@ -78,7 +78,7 @@
     motion: true,
     duoshuo: {
       userId: 9082388,
-      author: 'Admin'
+      author: '博主'
     }
   };
 </script>
@@ -154,7 +154,7 @@
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle"></p>
+  <p class="site-subtitle">Think Different</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -691,8 +691,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/12/17/android-PendingIntent-AlarmManager/" itemprop="url">
-                  Android启动定时任务
+                <a class="post-title-link" href="/2013/12/17/Android-not-receive-broadcast/" itemprop="url">
+                  Android4.0开机广播
                 </a>
               
             
@@ -716,8 +716,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/12/17/android-PendingIntent-AlarmManager/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/17/android-PendingIntent-AlarmManager/" itemprop="commentsCount"></span>
+                <a href="/2013/12/17/Android-not-receive-broadcast/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/17/Android-not-receive-broadcast/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -727,7 +727,7 @@
 
           
           
-             <span id="/2013/12/17/android-PendingIntent-AlarmManager/" class="leancloud_visitors" data-flag-title="Android启动定时任务">
+             <span id="/2013/12/17/Android-not-receive-broadcast/" class="leancloud_visitors" data-flag-title="Android4.0开机广播">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -749,14 +749,11 @@
 
       
         
-          <p>PendingIntent和AlarmManager</p>
-<h2 id="pendingintent使用的三种情况"><a href="#pendingintent使用的三种情况" class="headerlink" title="pendingintent使用的三种情况"></a>pendingintent使用的三种情况</h2><p>你可以通过<a href="http://developer.android.com/reference/android/app/PendingIntent.html#getActivity">getActivity</a>(Context context, int requestCode, Intent intent, int flags)系列方法从系统取得一个用于启动一个Activity的PendingIntent对象<br>可以通过<a href="http://developer.android.com/reference/android/app/PendingIntent.html#getService">getService</a>(Context context, int requestCode, Intent intent, int flags)方法从系统取得一个用于启动一个Service的PendingIntent对象<br>可以通过<a href="http://developer.android.com/reference/android/app/PendingIntent.html#getBroadcast">getBroadcast</a>(Context context, int requestCode, Intent intent, int flags)方法从系统取得一个用于向BroadcastReceiver的Intent广播的PendingIntent对象</p>
-<h2 id="pendingIntent的第4个参数"><a href="#pendingIntent的第4个参数" class="headerlink" title="pendingIntent的第4个参数"></a>pendingIntent的第4个参数</h2><p>FLAG_CANCEL_CURRENT:如果当前系统中已经存在一个相同的PendingIntent对象，那么就将先将已有的PendingIntent取消，然后重新生成一个PendingIntent对象。<br>FLAG_NO_CREATE:如果当前系统中不存在相同的PendingIntent对象，系统将不会创建该PendingIntent对象而是直接返回null。<br>FLAG_ONE_SHOT:该PendingIntent只作用一次。在该PendingIntent对象通过send()方法触发过后，PendingIntent将自动调用cancel()进行销毁，那么如果你再调用send()方法的话，系统将会返回一个SendIntentException。<br>FLAG_UPDATE_CURRENT:如果系统中有一个和你描述的PendingIntent对等的PendingInent，那么系统将使用该PendingIntent对象，但是会使用新的Intent来更新之前PendingIntent中的Intent对象数据，例如更新Intent中的Extras。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/12/17/android-PendingIntent-AlarmManager/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <p>有时候，Android4.0上app接收不到开机广播，测试发现，如果应用程序安装上始终没有被打开过，那么手机启动时，该应用无法接收到开机启动广播。<br>在Android 3.1的更新文档中已经做了说明。</p>
+<p><a href="http://developer.android.com/about/versions/android-3.1.html#launchcontrols" target="_blank" rel="external">Android官方说明</a></p>
+
+          
         
       
     </div>
@@ -823,7 +820,7 @@
                src="/images/avatar.jpg"
                alt="MS.T" />
           <p class="site-author-name" itemprop="name">MS.T</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+          <p class="site-description motion-element" itemprop="description">求知若饥，虚心若愚</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
