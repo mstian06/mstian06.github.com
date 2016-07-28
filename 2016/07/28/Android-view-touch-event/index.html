@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -57,15 +57,27 @@
 
 
 
-<meta name="description" content="求知若饥，虚心若愚">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MS.T Notes">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="简述Android系统中，每个Activity的用户界面都是有View和ViewGroup对象来组成的。
+那么当在界面上做了点击之后，点击事件是如何传递并处理的呢？首先点击事件处理相关的有三个接口函数：12345678910111213//分派事件public boolean dispatchTouchEvent(MotionEvent ev)//拦截事件，ViewGroup类中的源码实现就是&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聊聊Android点击事件传递">
+<meta property="og:url" content="http://yoursite.com/2016/07/28/Android-view-touch-event/index.html">
 <meta property="og:site_name" content="MS.T Notes">
-<meta property="og:description" content="求知若饥，虚心若愚">
+<meta property="og:description" content="简述Android系统中，每个Activity的用户界面都是有View和ViewGroup对象来组成的。
+那么当在界面上做了点击之后，点击事件是如何传递并处理的呢？首先点击事件处理相关的有三个接口函数：12345678910111213//分派事件public boolean dispatchTouchEvent(MotionEvent ev)//拦截事件，ViewGroup类中的源码实现就是&amp;#">
+<meta property="og:image" content="http://yoursite.com/assert/2016-07-28-01/viewgroup.png">
+<meta property="og:image" content="http://yoursite.com/assert/2016-07-28-01/sample.png">
+<meta property="og:image" content="http://yoursite.com/assert/2016-07-28-01/case1.png">
+<meta property="og:image" content="http://yoursite.com/assert/2016-07-28-01/case2.png">
+<meta property="og:image" content="http://yoursite.com/assert/2016-07-28-01/case3.png">
+<meta property="og:image" content="http://yoursite.com/assert/2016-07-28-01/case4.png">
+<meta property="og:image" content="http://yoursite.com/assert/2016-07-28-01/case5.png">
+<meta property="og:updated_time" content="2016-07-28T16:44:11.079Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MS.T Notes">
-<meta name="twitter:description" content="求知若饥，虚心若愚">
+<meta name="twitter:title" content="聊聊Android点击事件传递">
+<meta name="twitter:description" content="简述Android系统中，每个Activity的用户界面都是有View和ViewGroup对象来组成的。
+那么当在界面上做了点击之后，点击事件是如何传递并处理的呢？首先点击事件处理相关的有三个接口函数：12345678910111213//分派事件public boolean dispatchTouchEvent(MotionEvent ev)//拦截事件，ViewGroup类中的源码实现就是&amp;#">
+<meta name="twitter:image" content="http://yoursite.com/assert/2016-07-28-01/viewgroup.png">
 
 
 
@@ -83,7 +95,7 @@
   };
 </script>
 
-  <title> MS.T Notes </title>
+  <title> 聊聊Android点击事件传递 | MS.T Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,9 +150,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,9 +237,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -249,10 +259,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/07/28/Android-view-touch-event/" itemprop="url">
-                  聊聊Android点击事件传递
-                </a>
+                聊聊Android点击事件传递
               
             
           </h1>
@@ -326,9 +333,7 @@
       
 
       
-        
-          
-            <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>Android系统中，每个Activity的用户界面都是有View和ViewGroup对象来组成的。<br><img src="/assert/2016-07-28-01/viewgroup.png" alt="ViewGroup"></p>
+        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>Android系统中，每个Activity的用户界面都是有View和ViewGroup对象来组成的。<br><img src="/assert/2016-07-28-01/viewgroup.png" alt="ViewGroup"></p>
 <p>那么当在界面上做了点击之后，点击事件是如何传递并处理的呢？<br>首先点击事件处理相关的有三个接口函数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//分派事件</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//拦截事件，ViewGroup类中的源码实现就是&#123;return false;&#125;</span></span><br><span class="line">表示不拦截该事件，事件将向下传递（传递给其子View）；</span><br><span class="line">若手动重写该方法，使其返回<span class="keyword">true</span>则表示拦截，事件将终止向下传递，</span><br><span class="line">事件由当前ViewGroup类来处理，就是调用该类的<span class="title">onTouchEvent</span><span class="params">()</span>方法</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//处理事件，返回true则表示该View能处理该事件，事件将</span></span><br><span class="line">终止向上传递（传递给其父View）；返回<span class="keyword">false</span>表示不能处理，</span><br><span class="line">则把事件传递给其父View的<span class="title">onTouchEvent</span><span class="params">()</span>方法来处理</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span></span></span><br></pre></td></tr></table></figure></p>
 <p>只有ViewGroup才有onInterceptTouchEvent这个方法，可以向下拦截事件的传递。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>下面根据一个示例进行说明：<strong>TouchEventSample</strong>(<a href="https://github.com/mstian06/DemoOfblog4mstian06/tree/master/TouchEventSample" target="_blank" rel="external">代码地址</a>)<br><img src="/assert/2016-07-28-01/sample.png" alt="sample"><br>红色区域为普通FragmentLayout<br>蓝色区域为MyRelativeLayout（继承自RelativeLayout，重写了上述三个方法，用于测试点击事件拦截和处理）<br>白色区域为MyTextView（重写了dispatchTouchEvent和onTouchEvent两个方法）<br>MainActivity，则重写了上述三个方法<br>点击右上角case1-case5，分别对应五种情况。</p>
@@ -344,545 +349,80 @@
 <p><img src="/assert/2016-07-28-01/case5.png" alt="case1"></p>
 <p><strong>参考文章：</strong><br><a href="https://developer.android.com/guide/topics/ui/ui-events.html#EventListeners" target="_blank" rel="external">Android-Developer-输入事件</a></p>
 
-          
-        
       
     </div>
     
     <div>
       
+        
+      
     </div>
 
     <div>
+      
+        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/09/08/modify-android-keystore-alias/" itemprop="url">
-                  修改Android签名密码-别名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-09-08T00:00:00+08:00" content="2014-09-08">
-              2014-09-08
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/移动开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动开发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/09/08/modify-android-keystore-alias/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/08/modify-android-keystore-alias/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/09/08/modify-android-keystore-alias/" class="leancloud_visitors" data-flag-title="修改Android签名密码-别名">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>之前在测试Eclipse ADT的Custom debug keystore自定义调试证书的时候，发过一篇关于调试证书规格的博文 <strong>“Eclipse ADT的Custom debug keystore所需证书规格”:<a href="http://blog.k-res.net/archives/1229.html">http://blog.k-res.net/archives/1229.html</a> </strong>，提到过自定义调试证书的密码和alias命名以及alias密码都是有规矩的。<br>其实Android应用开发接入各种SDK时会发现，有很多SDK是需要靠package name和keystore的指纹hash来识别的（百度地图SDK、Facebook SDK等等…），这样如果使用默认自动生成的debug keystore的话就会给开发调试工作带来一些麻烦。这时可以通过修改正式的release keystore，生成一份“遵守规矩”的临时自定义调试证书给开发时用，就方便多了。</p>
-<p>具体方法如下：<br>1.首先当然是先复制一份正式证书出来作为要修改为的临时调试证书。<br>2.修改keystore密码的命令(keytool为JDK带的命令行工具)：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ keytool -storepasswd -keystore my.keystore</span><br></pre></td></tr></table></figure></p>
-<p>其中，my.keystore是复制出来的证书文件，执行后会提示输入证书的当前密码，和新密码以及重复新密码确认。这一步需要将密码改为android。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/08/modify-android-keystore-alias/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/09/08/modify-android-keystore-alias/" rel="next" title="修改Android签名密码-别名">
+                <i class="fa fa-chevron-left"></i> 修改Android签名密码-别名
+              </a>
+            
           </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2014/06/26/android-touch-event-consume/" itemprop="url">
-                  Android点击事件分发
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-06-26T00:00:00+08:00" content="2014-06-26">
-              2014-06-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/移动开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动开发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/06/26/android-touch-event-consume/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/26/android-touch-event-consume/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/06/26/android-touch-event-consume/" class="leancloud_visitors" data-flag-title="Android点击事件分发">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>首先是点击事件在不同的布局层次中传递的。<br>理解Down事件再哪个层次被消费（拦截），后续的Move、Up的点击事件如何传递。<br>其中ViewGroup中onInterceptTouchEvent方法用来对事件作预处理的，对于Down事件返回true表示要消费这个事件，不再向子View传递。<br><a href="http://blog.csdn.net/guitk/article/details/7057155">Android中dispatchTouchEvent, onInterceptTouchEvent, onTouchEvent的理解</a><br>onInterceptTouchEvent用于改变事件的传递方向。决定传递方向的是返回值，返回为false时事件会传递给子控件，返回值为true时事件会传递给当前控件的onTouchEvent()，这就是所谓的Intercept(拦截)。<br>[tisa ps:正确的使用方法是，在此方法内仅判断事件是否需要拦截，然后返回。即便需要拦截也应该直接返回true，然后由onTouchEvent方法进行处理。]</p>
-<p>onTouchEvent用于处理事件，返回值决定当前控件是否消费（consume）了这个事件。尤其对于ACTION_DOWN事件，返回true，表示我想要处理后续事件；返回false，表示不关心此事件，并返回由父类进行处理。<br>可能你要问是否消费了又区别吗，反正我已经针对事件编写了处理代码？答案是有区别！比如ACTION_MOVE或者ACTION_UP发生的前提是一定曾经发生了ACTION_DOWN，如果你没有消费ACTION_DOWN，那么系统会认为ACTION_DOWN没有发生过，所以ACTION_MOVE或者ACTION_UP就不能被捕获。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/06/26/android-touch-event-consume/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/01/05/apply-appstore-us-account/" itemprop="url">
-                  AppStore美国区账号
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-01-05T00:00:00+08:00" content="2014-01-05">
-              2014-01-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/01/05/apply-appstore-us-account/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/05/apply-appstore-us-account/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/01/05/apply-appstore-us-account/" class="leancloud_visitors" data-flag-title="AppStore美国区账号">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>不得不吐槽一下，申请一个美国去账号好麻烦啊！折腾了一晚上，自己的步骤记录如下：<br><strong>1. 连上iTunes的时候，选择美国区，随便找一个free的app下载，这时候选择注册apple id。一系列步骤中，在够信用卡的时候选None。</strong><br><img src="/assert/cbc17b380cd7912345bdd90faf345982b2b78029.jpg" alt="Alt text"><br>网上也有很多参考：<br><a href="http://jingyan.baidu.com/article/f96699bba4ebc3894e3c1bbe.html">怎么注册美国iTunes ID、苹果账号</a><br>这样注册后就可以用这个账号安装app了。<br>关键是只能用这一次，后面再选美国区的app下载，还是不行，还是会弹出让你绑定信用卡。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/01/05/apply-appstore-us-account/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
       
     </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/01/04/android-root-install/" itemprop="url">
-                  Android-Root静默安装
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-01-04T00:00:00+08:00" content="2014-01-04">
-              2014-01-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/移动开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动开发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/01/04/android-root-install/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/04/android-root-install/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/01/04/android-root-install/" class="leancloud_visitors" data-flag-title="Android-Root静默安装">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>说明：用于简单记录。</p>
-<h2 id="请求root权限，root权限静默安装"><a href="#请求root权限，root权限静默安装" class="headerlink" title="请求root权限，root权限静默安装"></a>请求root权限，root权限静默安装</h2><p>请求root<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求root权限，用这个请求root权限，等待授权管理返回</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">upgradeRootPermission2</span><span class="params">(String pkgCodePath)</span> </span>&#123;</span><br><span class="line">    String cmd=<span class="string">"chmod 777 "</span> + pkgCodePath;</span><br><span class="line">    Process process = <span class="keyword">null</span>; </span><br><span class="line">    DataOutputStream os = <span class="keyword">null</span>; </span><br><span class="line">    BufferedReader br = <span class="keyword">null</span>;</span><br><span class="line">    StringBuilder sb = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        process = Runtime.getRuntime().exec(<span class="string">"su"</span>);</span><br><span class="line">        os = <span class="keyword">new</span> DataOutputStream(process.getOutputStream());</span><br><span class="line">        os.writeBytes(cmd + <span class="string">"\n"</span>);</span><br><span class="line">        os.writeBytes(<span class="string">"echo return\n"</span>);</span><br><span class="line">        os.writeBytes(<span class="string">"exit\n"</span>);</span><br><span class="line">        br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(</span><br><span class="line">                process.getInputStream()));</span><br><span class="line"></span><br><span class="line">        sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        String temp = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">while</span> ((temp = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            sb.append(temp + <span class="string">"\n"</span>);</span><br><span class="line">            CLog.e(<span class="string">"TMS"</span>, <span class="string">"temp=="</span>+temp);</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"return"</span>.equalsIgnoreCase(temp)) &#123;</span><br><span class="line">                CLog.e(<span class="string">"TMS"</span>, <span class="string">"----------"</span> + sb.toString());</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        process.waitFor();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        CLog.e(<span class="string">"TMS"</span>, <span class="string">"异常："</span> + e.getMessage());</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (os != <span class="keyword">null</span>) &#123;</span><br><span class="line">                os.flush();</span><br><span class="line">                os.close();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (br != <span class="keyword">null</span>) &#123;</span><br><span class="line">                br.close();</span><br><span class="line">            &#125;</span><br><span class="line">            process.destroy();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/01/04/android-root-install/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
@@ -890,6 +430,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/28/Android-view-touch-event/"
+           data-title="聊聊Android点击事件传递" data-url="http://yoursite.com/2016/07/28/Android-view-touch-event/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -909,8 +457,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -962,6 +519,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#case1"><span class="nav-number"></span> <span class="nav-text">case1:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#case2"><span class="nav-number"></span> <span class="nav-text">case2:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#case3"><span class="nav-number"></span> <span class="nav-text">case3:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#case4"><span class="nav-number"></span> <span class="nav-text">case4:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#case5"><span class="nav-number"></span> <span class="nav-text">case5:</span></a></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1053,6 +621,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
