@@ -250,6 +250,140 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/21/android-view-layoutInflater/" itemprop="url">
+                  Android View原理（1）-LayoutInflater原理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-21T00:00:00+08:00" content="2016-08-21">
+              2016-08-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/移动开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/21/android-view-layoutInflater/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/21/android-view-layoutInflater/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/21/android-view-layoutInflater/" class="leancloud_visitors" data-flag-title="Android View原理（1）-LayoutInflater原理">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>Android系统中，加载布局除了使用setContentView（）方法之外，还可以使用LayoutInfalter手动加载布局。<br>LayoutInflater的使用很简单，首先需要获取LayoutInflater的实例，有以下两种方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LayoutInflater layoutInflater = (LayoutInflater) context  </div><div class="line">        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);</div></pre></td></tr></table></figure></p>
+<p>和<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">LayoutInflater layoutInflater = LayoutInflater.from(context);  </div><div class="line"><span class="comment">// 其详细定义如下</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LayoutInflater <span class="title">from</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">    LayoutInflater LayoutInflater =</div><div class="line">            (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);</div><div class="line">    <span class="keyword">if</span> (LayoutInflater == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(<span class="string">"LayoutInflater not found."</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> LayoutInflater;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其中第二种是对第一种的安全封装。</p>
+<p>然后，调用也很简单<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</div><div class="line"> * Inflate a new view hierarchy from the specified xml resource. Throws</div><div class="line"> * &#123;<span class="doctag">@link</span> InflateException&#125; if there is an error.</div><div class="line"> * </div><div class="line"> * <span class="doctag">@param</span> resource ID for an XML layout resource to load (e.g.,</div><div class="line"> *        &lt;code&gt;R.layout.main_page&lt;/code&gt;)</div><div class="line"> * <span class="doctag">@param</span> root Optional view to be the parent of the generated hierarchy.</div><div class="line"> * <span class="doctag">@return</span> The root View of the inflated hierarchy. If root was supplied,</div><div class="line"> *         this is the root View; otherwise it is the root of the inflated</div><div class="line"> *         XML file.</div><div class="line"> */</span></div><div class="line"><span class="function"><span class="keyword">public</span> View <span class="title">inflate</span><span class="params">(@LayoutRes <span class="keyword">int</span> resource, @Nullable ViewGroup root)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> inflate(resource, root, root != <span class="keyword">null</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>resource，就是要加载的布局资源id；<br>root，则表示是否将加载的布局附属到root下面。<br><strong>注意</strong>返回值，如果root不为空返回的是root布局；否则返回的加载的布局。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/21/android-view-layoutInflater/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/28/Android-view-touch-event/" itemprop="url">
                   聊聊Android点击事件传递
                 </a>
@@ -735,137 +869,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/01/04/android-root-install/" itemprop="url">
-                  Android-Root静默安装
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-01-04T00:00:00+08:00" content="2014-01-04">
-              2014-01-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/移动开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动开发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/01/04/android-root-install/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/04/android-root-install/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/01/04/android-root-install/" class="leancloud_visitors" data-flag-title="Android-Root静默安装">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>说明：用于简单记录。</p>
-<h2 id="请求root权限，root权限静默安装"><a href="#请求root权限，root权限静默安装" class="headerlink" title="请求root权限，root权限静默安装"></a>请求root权限，root权限静默安装</h2><p>请求root<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 请求root权限，用这个请求root权限，等待授权管理返回</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">upgradeRootPermission2</span><span class="params">(String pkgCodePath)</span> </span>&#123;</div><div class="line">    String cmd=<span class="string">"chmod 777 "</span> + pkgCodePath;</div><div class="line">    Process process = <span class="keyword">null</span>; </div><div class="line">    DataOutputStream os = <span class="keyword">null</span>; </div><div class="line">    BufferedReader br = <span class="keyword">null</span>;</div><div class="line">    StringBuilder sb = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        process = Runtime.getRuntime().exec(<span class="string">"su"</span>);</div><div class="line">        os = <span class="keyword">new</span> DataOutputStream(process.getOutputStream());</div><div class="line">        os.writeBytes(cmd + <span class="string">"\n"</span>);</div><div class="line">        os.writeBytes(<span class="string">"echo return\n"</span>);</div><div class="line">        os.writeBytes(<span class="string">"exit\n"</span>);</div><div class="line">        br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(</div><div class="line">                process.getInputStream()));</div><div class="line"></div><div class="line">        sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">        String temp = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">while</span> ((temp = br.readLine()) != <span class="keyword">null</span>) &#123;</div><div class="line">            sb.append(temp + <span class="string">"\n"</span>);</div><div class="line">            CLog.e(<span class="string">"TMS"</span>, <span class="string">"temp=="</span>+temp);</div><div class="line">            <span class="keyword">if</span> (<span class="string">"return"</span>.equalsIgnoreCase(temp)) &#123;</div><div class="line">                CLog.e(<span class="string">"TMS"</span>, <span class="string">"----------"</span> + sb.toString());</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        process.waitFor();</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">        CLog.e(<span class="string">"TMS"</span>, <span class="string">"异常："</span> + e.getMessage());</div><div class="line">    &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span> (os != <span class="keyword">null</span>) &#123;</div><div class="line">                os.flush();</div><div class="line">                os.close();</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (br != <span class="keyword">null</span>) &#123;</div><div class="line">                br.close();</div><div class="line">            &#125;</div><div class="line">            process.destroy();</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/01/04/android-root-install/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -911,7 +914,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
