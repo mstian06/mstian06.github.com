@@ -250,6 +250,138 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/22/android-view-draw/" itemprop="url">
+                  Android View原理（2）-视图绘制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-22T00:00:00+08:00" content="2016-08-22">
+              2016-08-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/移动开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/22/android-view-draw/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/22/android-view-draw/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/22/android-view-draw/" class="leancloud_visitors" data-flag-title="Android View原理（2）-视图绘制">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>Android系统中，我们知道view的绘制都要经过三个阶段onMeasure()、onLayout()和onDraw()，下面根据一个示例来研究一下这三个阶段。<br>示例代码：<strong>ViewDrawSample</strong>(<a href="https://github.com/mstian06/DemoOfblog4mstian06/tree/master/ViewDrawSample">代码地址</a>)</p>
+<h2 id="onMeasure"><a href="#onMeasure" class="headerlink" title="onMeasure()"></a>onMeasure()</h2><p><img src="/assert/2016-08-22-01/callFunction.png" alt="callFunction"><br>依照这个调用流程，我们查看一下其中几个重要的地方。<br><strong>首先</strong>，从上图可以看出，onMeasure()从ViewRoot开始调起。观察performTraversals()方法可以发现如下代码：<br>ViewRootImpl.java-performTraversals()<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> childWidthMeasureSpec = getRootMeasureSpec(mWidth, lp.width);</div><div class="line"><span class="keyword">int</span> childHeightMeasureSpec = getRootMeasureSpec(mHeight, lp.height);</div><div class="line"></div><div class="line"><span class="keyword">if</span> (DEBUG_LAYOUT) Log.v(TAG, <span class="string">"Ooops, something changed!  mWidth="</span></div><div class="line">        + mWidth + <span class="string">" measuredWidth="</span> + host.getMeasuredWidth()</div><div class="line">        + <span class="string">" mHeight="</span> + mHeight</div><div class="line">        + <span class="string">" measuredHeight="</span> + host.getMeasuredHeight()</div><div class="line">        + <span class="string">" coveredInsetsChanged="</span> + contentInsetsChanged);</div><div class="line"></div><div class="line"> <span class="comment">// Ask host how big it wants to be</span></div><div class="line">performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);</div></pre></td></tr></table></figure></p>
+<p>而getRootMeasureSpec()如下：</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/22/android-view-draw/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/21/android-view-layoutInflater/" itemprop="url">
                   Android View原理（1）-LayoutInflater原理
                 </a>
@@ -758,117 +890,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/01/05/apply-appstore-us-account/" itemprop="url">
-                  AppStore美国区账号
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-01-05T00:00:00+08:00" content="2014-01-05">
-              2014-01-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/01/05/apply-appstore-us-account/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/05/apply-appstore-us-account/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/01/05/apply-appstore-us-account/" class="leancloud_visitors" data-flag-title="AppStore美国区账号">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>不得不吐槽一下，申请一个美国去账号好麻烦啊！折腾了一晚上，自己的步骤记录如下：<br><strong>1. 连上iTunes的时候，选择美国区，随便找一个free的app下载，这时候选择注册apple id。一系列步骤中，在够信用卡的时候选None。</strong><br><img src="/assert/cbc17b380cd7912345bdd90faf345982b2b78029.jpg" alt="Alt text"><br>网上也有很多参考：<br><a href="http://jingyan.baidu.com/article/f96699bba4ebc3894e3c1bbe.html">怎么注册美国iTunes ID、苹果账号</a><br>这样注册后就可以用这个账号安装app了。<br>关键是只能用这一次，后面再选美国区的app下载，还是不行，还是会弹出让你绑定信用卡。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/01/05/apply-appstore-us-account/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -914,7 +935,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

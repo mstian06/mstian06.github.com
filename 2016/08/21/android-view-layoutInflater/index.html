@@ -65,7 +65,7 @@
 <meta property="og:description" content="简述Android系统中，加载布局除了使用setContentView（）方法之外，还可以使用LayoutInfalter手动加载布局。LayoutInflater的使用很简单，首先需要获取LayoutInflater的实例，有以下两种方法12LayoutInflater layoutInflater = (LayoutInflater) context          .getSystemSe">
 <meta property="og:image" content="http://yoursite.com/assert/2016-08-21-01/framelayout.png">
 <meta property="og:image" content="http://yoursite.com/assert/2016-08-21-01/framelayout2.png">
-<meta property="og:updated_time" content="2016-08-21T14:06:21.700Z">
+<meta property="og:updated_time" content="2016-08-21T21:13:52.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android View原理（1）-LayoutInflater原理">
 <meta name="twitter:description" content="简述Android系统中，加载布局除了使用setContentView（）方法之外，还可以使用LayoutInfalter手动加载布局。LayoutInflater的使用很简单，首先需要获取LayoutInflater的实例，有以下两种方法12LayoutInflater layoutInflater = (LayoutInflater) context          .getSystemSe">
@@ -337,7 +337,7 @@
 <ol>
 <li>如果root为null，attachToRoot将失去作用，设置任何值都没有意义。</li>
 <li>如果root不为null，attachToRoot设为true，则会给加载的布局文件的指定一个父布局，即root。</li>
-<li>如果root不为null，attachToRoot设为false，则会将布局文件最外层的所有layout属性进行设置，当该view被添加到父view当中时，这些layout属性会自动生效。</li>
+<li>如果root不为null，attachToRoot设为false，则会将布局文件最外层的所有layout属性进行设置，当该view被添加到父view当中时，这些layout属性会自动生效。<strong>（试一下示例代码中infalter.inflate(R.layout.button_layout, main_layout, false)的这种情况，个人理解是infalte时认为是有父布局（这样layout_width和layout_height设置是有效的），但实际上又没有添加到父布局中。）</strong></li>
 </ol>
 </blockquote>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>下面根据一个示例进行说明：<strong>InflaterSample</strong>(<a href="https://github.com/mstian06/DemoOfblog4mstian06/tree/master/InflaterSample" target="_blank" rel="external">代码地址</a>)<br>示例为用LayoutInfalter手动加载一个button布局。部分代码如下：<br>button_layout.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="comment">&lt;!-- 可以尝试将layout_width和height修改成别的值看下效果 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Button</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:text</span>=<span class="string">"Button"</span> &gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">Button</span>&gt;</span></div></pre></td></tr></table></figure></p>
@@ -386,6 +386,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/22/android-view-draw/" rel="prev" title="Android View原理（2）-视图绘制">
+                Android View原理（2）-视图绘制 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -480,7 +484,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
