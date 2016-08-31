@@ -282,141 +282,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/23/android-gestures/" itemprop="url">
-                  Android 手势相关
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T00:00:00+08:00" content="2016-08-23">
-              2016-08-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/移动开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动开发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/23/android-gestures/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/23/android-gestures/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/08/23/android-gestures/" class="leancloud_visitors" data-flag-title="Android 手势相关">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>Android系统中，我们知道在Activity或View中可以重写onTouchEvent(MotionEvent event)回调函数捕获触摸事件。<br>而View提供了setOnTouchListener的接口，这样不必再重写onTouchEvent函数了。<br>下面代码片段是View的dispatchTouchEvent函数，可以看到有mOnTouchListener的话会优先调用listener。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</div><div class="line">	<span class="comment">// ...省略的代码</span></div><div class="line">	<span class="keyword">if</span> (onFilterTouchEventForSecurity(event)) &#123;</div><div class="line">	    <span class="comment">//noinspection SimplifiableIfStatement</span></div><div class="line">	    ListenerInfo li = mListenerInfo;</div><div class="line">	    <span class="keyword">if</span> (li != <span class="keyword">null</span> &amp;&amp; li.mOnTouchListener != <span class="keyword">null</span></div><div class="line">	            &amp;&amp; (mViewFlags &amp; ENABLED_MASK) == ENABLED</div><div class="line">	            &amp;&amp; li.mOnTouchListener.onTouch(<span class="keyword">this</span>, event)) &#123;</div><div class="line">	        result = <span class="keyword">true</span>;</div><div class="line">	    &#125;</div><div class="line">	</div><div class="line">	    <span class="keyword">if</span> (!result &amp;&amp; onTouchEvent(event)) &#123;</div><div class="line">	        result = <span class="keyword">true</span>;</div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// ...省略的代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>onTouchEvent（或onTouchListener）中只能ACTION_DOWN、ACTION_MOVE、ACTION_UP等这些触摸动作。而对于手势该如何捕获呢？当然，我们可以自己在onTouchEvent中根据移动的位置自行判断，然而对于一些常见的手势如双击、长按、快速滑动（fling），在Android系统中已经提供了GestureDetector来帮助我们检测和捕获手势。</p>
-<p>view的绘制都要经过三个阶段onMeasure()、onLayout()和onDraw()，下面根据一个示例来研究一下这三个阶段。<br>示例代码：<strong>GestureSample</strong>(<a href="https://github.com/mstian06/DemoOfblog4mstian06/tree/master/GestureSample">代码地址</a>)</p>
-<h2 id="onMeasure"><a href="#onMeasure" class="headerlink" title="onMeasure()"></a>onMeasure()</h2><p><img src="/assert/2016-08-22-01/callFunction.png" alt="callFunction"><br>依照这个调用流程，我们查看一下其中几个重要的地方。<br><strong>首先</strong>，从上图可以看出，onMeasure()从ViewRoot开始调起。观察performTraversals()方法可以发现如下代码：<br>ViewRootImpl.java-performTraversals()<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> childWidthMeasureSpec = getRootMeasureSpec(mWidth, lp.width);</div><div class="line"><span class="keyword">int</span> childHeightMeasureSpec = getRootMeasureSpec(mHeight, lp.height);</div><div class="line"></div><div class="line"><span class="keyword">if</span> (DEBUG_LAYOUT) Log.v(TAG, <span class="string">"Ooops, something changed!  mWidth="</span></div><div class="line">        + mWidth + <span class="string">" measuredWidth="</span> + host.getMeasuredWidth()</div><div class="line">        + <span class="string">" mHeight="</span> + mHeight</div><div class="line">        + <span class="string">" measuredHeight="</span> + host.getMeasuredHeight()</div><div class="line">        + <span class="string">" coveredInsetsChanged="</span> + contentInsetsChanged);</div><div class="line"></div><div class="line"> <span class="comment">// Ask host how big it wants to be</span></div><div class="line">performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);</div></pre></td></tr></table></figure></p>
-<p>而getRootMeasureSpec()如下：</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/23/android-gestures/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/08/22/android-view-draw/" itemprop="url">
                   Android View原理（2）-视图绘制
                 </a>
@@ -930,6 +795,138 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/06/26/android-touch-event-consume/" itemprop="url">
+                  Android点击事件分发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-06-26T00:00:00+08:00" content="2014-06-26">
+              2014-06-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/移动开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/06/26/android-touch-event-consume/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/26/android-touch-event-consume/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2014/06/26/android-touch-event-consume/" class="leancloud_visitors" data-flag-title="Android点击事件分发">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>首先是点击事件在不同的布局层次中传递的。<br>理解Down事件再哪个层次被消费（拦截），后续的Move、Up的点击事件如何传递。<br>其中ViewGroup中onInterceptTouchEvent方法用来对事件作预处理的，对于Down事件返回true表示要消费这个事件，不再向子View传递。<br><a href="http://blog.csdn.net/guitk/article/details/7057155">Android中dispatchTouchEvent, onInterceptTouchEvent, onTouchEvent的理解</a><br>onInterceptTouchEvent用于改变事件的传递方向。决定传递方向的是返回值，返回为false时事件会传递给子控件，返回值为true时事件会传递给当前控件的onTouchEvent()，这就是所谓的Intercept(拦截)。<br>[tisa ps:正确的使用方法是，在此方法内仅判断事件是否需要拦截，然后返回。即便需要拦截也应该直接返回true，然后由onTouchEvent方法进行处理。]</p>
+<p>onTouchEvent用于处理事件，返回值决定当前控件是否消费（consume）了这个事件。尤其对于ACTION_DOWN事件，返回true，表示我想要处理后续事件；返回false，表示不关心此事件，并返回由父类进行处理。<br>可能你要问是否消费了又区别吗，反正我已经针对事件编写了处理代码？答案是有区别！比如ACTION_MOVE或者ACTION_UP发生的前提是一定曾经发生了ACTION_DOWN，如果你没有消费ACTION_DOWN，那么系统会认为ACTION_DOWN没有发生过，所以ACTION_MOVE或者ACTION_UP就不能被捕获。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/06/26/android-touch-event-consume/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -975,7 +972,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
