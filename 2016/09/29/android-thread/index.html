@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Git," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -84,30 +84,19 @@
 
 
 
-<meta name="description" content="说明：根据SVN库地址，拉取数据生成一个git本地代码库。用于svn迁移数据到git。GIT客户端与SVN服务器下面是必须要安装的几个软件：
-
-Git-1.7.4, 这个是GIT客户端，可以在GIT的官方网站上下载。
-SVN客户端，只有安装了SVN客户端才能利用Tortoisegit访问SVN服务端，如果不装那就只能访问GIT的服务器了。
-Tortoisegit , 这个工具为Windows用户提">
+<meta name="description" content="本文简单介绍Android中线程池使用，相关源码在android.java中的 java.util.concurrent 包中。
+1234567891011121314151617181920212223242526//创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。public static ExecutorService newCachedThre">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Svn代码库迁移到Git">
-<meta property="og:url" content="http://yoursite.com/2013/12/18/change-svn-to-git/index.html">
+<meta property="og:title" content="Java线程池相关">
+<meta property="og:url" content="http://yoursite.com/2016/09/29/android-thread/index.html">
 <meta property="og:site_name" content="MS.T Notes">
-<meta property="og:description" content="说明：根据SVN库地址，拉取数据生成一个git本地代码库。用于svn迁移数据到git。GIT客户端与SVN服务器下面是必须要安装的几个软件：
-
-Git-1.7.4, 这个是GIT客户端，可以在GIT的官方网站上下载。
-SVN客户端，只有安装了SVN客户端才能利用Tortoisegit访问SVN服务端，如果不装那就只能访问GIT的服务器了。
-Tortoisegit , 这个工具为Windows用户提">
-<meta property="og:image" content="http://yoursite.com/assert/162347_csMJ_196085.png">
-<meta property="og:updated_time" content="2016-04-08T17:19:27.725Z">
+<meta property="og:description" content="本文简单介绍Android中线程池使用，相关源码在android.java中的 java.util.concurrent 包中。
+1234567891011121314151617181920212223242526//创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。public static ExecutorService newCachedThre">
+<meta property="og:updated_time" content="2016-09-30T11:54:19.113Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Svn代码库迁移到Git">
-<meta name="twitter:description" content="说明：根据SVN库地址，拉取数据生成一个git本地代码库。用于svn迁移数据到git。GIT客户端与SVN服务器下面是必须要安装的几个软件：
-
-Git-1.7.4, 这个是GIT客户端，可以在GIT的官方网站上下载。
-SVN客户端，只有安装了SVN客户端才能利用Tortoisegit访问SVN服务端，如果不装那就只能访问GIT的服务器了。
-Tortoisegit , 这个工具为Windows用户提">
-<meta name="twitter:image" content="http://yoursite.com/assert/162347_csMJ_196085.png">
+<meta name="twitter:title" content="Java线程池相关">
+<meta name="twitter:description" content="本文简单介绍Android中线程池使用，相关源码在android.java中的 java.util.concurrent 包中。
+1234567891011121314151617181920212223242526//创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。public static ExecutorService newCachedThre">
 
 
 
@@ -128,9 +117,9 @@ Tortoisegit , 这个工具为Windows用户提">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2013/12/18/change-svn-to-git/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/29/android-thread/"/>
 
-  <title> Svn代码库迁移到Git | MS.T Notes </title>
+  <title> Java线程池相关 | MS.T Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -294,7 +283,7 @@ Tortoisegit , 这个工具为Windows用户提">
             
             
               
-                Svn代码库迁移到Git
+                Java线程池相关
               
             
           </h1>
@@ -306,8 +295,8 @@ Tortoisegit , 这个工具为Windows用户提">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-12-18T00:00:00+08:00" content="2013-12-18">
-              2013-12-18
+            <time itemprop="dateCreated" datetime="2016-09-29T00:00:00+08:00" content="2016-09-29">
+              2016-09-29
             </time>
           </span>
 
@@ -320,8 +309,8 @@ Tortoisegit , 这个工具为Windows用户提">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术工具/" itemprop="url" rel="index">
-                    <span itemprop="name">技术工具</span>
+                  <a href="/categories/移动开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动开发</span>
                   </a>
                 </span>
 
@@ -336,8 +325,8 @@ Tortoisegit , 这个工具为Windows用户提">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/12/18/change-svn-to-git/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/18/change-svn-to-git/" itemprop="commentsCount"></span>
+                <a href="/2016/09/29/android-thread/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/29/android-thread/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -347,7 +336,7 @@ Tortoisegit , 这个工具为Windows用户提">
 
           
           
-             <span id="/2013/12/18/change-svn-to-git/" class="leancloud_visitors" data-flag-title="Svn代码库迁移到Git">
+             <span id="/2016/09/29/android-thread/" class="leancloud_visitors" data-flag-title="Java线程池相关">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -369,14 +358,9 @@ Tortoisegit , 这个工具为Windows用户提">
       
 
       
-        <p><strong>说明：根据SVN库地址，拉取数据生成一个git本地代码库。用于svn迁移数据到git。</strong><br><strong>GIT客户端与SVN服务器</strong><br>下面是必须要安装的几个软件：</p>
-<ul>
-<li>Git-1.7.4, 这个是GIT客户端，可以在GIT的官方网站上下载。</li>
-<li>SVN客户端，只有安装了SVN客户端才能利用Tortoisegit访问SVN服务端，如果不装那就只能访问GIT的服务器了。</li>
-<li>Tortoisegit , 这个工具为Windows用户提供了良好的GIT操作界面，而且如果习惯了使用SVN的人几乎没有难度。<br>这几个软件的关系是：Tortoisegit提供了良好的界面操作GIT，底层实际使用Git-1.7.4客户端完成所有GIT功能，并且Tortoisegit依赖SVN客户端来提供将本地GIT管理的数据提交到SVN服务器上的功能。<br>最好按照上面列出的顺序依次安装，否则需要手动配置一些路径。<br>这个时候可以在Windows的右键菜单中发现Git Clone这个选项。通过这个选项就可以把SVN服务器上的数据下载到本地，并由GIT客户端进行管理。<a id="more"></a>
-<img src="/assert/162347_csMJ_196085.png" alt="Alt text"><br>如上图，从SVN克隆数据必须勾选红框中的CheckBox，然后在填写分支名称，登陆用户名等信息。这个对话框上面一半是用于从GIT服务器上克隆已有项目的。<br>这样就可以按照一般GIT客户端的方式在本地管理代码，上传到远端服务器时需要在右键菜单中选择SVN Dcommit命令，就可以把代码提交到SVN服务器上了。<br>注解：填写Url，Directory，勾选上图的红框，不要勾选trunk，tags，branch，填写username，之后填写密码等，就可以了。<br>之后再拉取代码用菜单中的SVN fetch，svn rebase，提交代码用svn dcommit（没试过）。</li>
-</ul>
-<p><strong>参考资料：（上文基本上是扒来的，加上自己的注解）</strong><br><a href="http://www.cnblogs.com/cppguru/archive/2011/06/22/2086996.html" target="_blank" rel="external">从SVN迁移到GIT</a><br><a href="http://sfzhang88.blog.51cto.com/4995876/1198867" target="_blank" rel="external">SVN数据迁移到Git笔记</a><br><a href="http://www.oschina.net/translate/howto_use_git_with_svn" target="_blank" rel="external">如何一起使用 Git 和 SVN</a></p>
+        <p>本文简单介绍Android中线程池使用，相关源码在android.java中的 <code>java.util.concurrent</code> 包中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">//创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。</div><div class="line">public static ExecutorService newCachedThreadPool() &#123;</div><div class="line">    return new ThreadPoolExecutor(0, Integer.MAX_VALUE,</div><div class="line">                                  60L, TimeUnit.SECONDS,</div><div class="line">                                  new SynchronousQueue&lt;Runnable&gt;());</div><div class="line">&#125;</div><div class="line"></div><div class="line">//创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。</div><div class="line">public static ExecutorService newFixedThreadPool(int nThreads) &#123;</div><div class="line">    return new ThreadPoolExecutor(nThreads, nThreads,</div><div class="line">                                  0L, TimeUnit.MILLISECONDS,</div><div class="line">                                  new LinkedBlockingQueue&lt;Runnable&gt;());</div><div class="line">&#125;</div><div class="line"></div><div class="line">//创建一个定长线程池，支持定时及周期性任务执行。</div><div class="line">public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize) &#123;</div><div class="line">    return new ScheduledThreadPoolExecutor(corePoolSize);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。</div><div class="line">public static ExecutorService newSingleThreadExecutor() &#123;</div><div class="line">    return new FinalizableDelegatedExecutorService</div><div class="line">        (new ThreadPoolExecutor(1, 1,</div><div class="line">                                0L, TimeUnit.MILLISECONDS,</div><div class="line">                                new LinkedBlockingQueue&lt;Runnable&gt;()));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>参考文章：</strong><br><a href="http://www.trinea.cn/android/java-android-thread-pool/" target="_blank" rel="external">Java线程池</a></p>
 
       
     </div>
@@ -399,7 +383,7 @@ Tortoisegit , 这个工具为Windows用户提">
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag">#Git</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
         </div>
       
@@ -408,17 +392,13 @@ Tortoisegit , 这个工具为Windows用户提">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2013/12/17/android-not-receive-broadcast/" rel="next" title="Android4.0开机广播">
-                <i class="fa fa-chevron-left"></i> Android4.0开机广播
+              <a href="/2016/09/28/android-github-imageloader/" rel="next" title="Android图片加载库">
+                <i class="fa fa-chevron-left"></i> Android图片加载库
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2013/12/19/parser-json-error/" rel="prev" title="Android2.3解析Json出错">
-                Android2.3解析Json出错 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -467,8 +447,8 @@ Tortoisegit , 这个工具为Windows用户提">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2013/12/18/change-svn-to-git/"
-           data-title="Svn代码库迁移到Git" data-url="http://yoursite.com/2013/12/18/change-svn-to-git/">
+      <div class="ds-thread" data-thread-key="2016/09/29/android-thread/"
+           data-title="Java线程池相关" data-url="http://yoursite.com/2016/09/29/android-thread/">
       </div>
     
   </div>

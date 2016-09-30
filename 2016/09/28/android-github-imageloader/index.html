@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Git," />
+  <meta name="keywords" content="Android,Android开源项目," />
 
 
 
@@ -84,30 +84,25 @@
 
 
 
-<meta name="description" content="说明：根据SVN库地址，拉取数据生成一个git本地代码库。用于svn迁移数据到git。GIT客户端与SVN服务器下面是必须要安装的几个软件：
-
-Git-1.7.4, 这个是GIT客户端，可以在GIT的官方网站上下载。
-SVN客户端，只有安装了SVN客户端才能利用Tortoisegit访问SVN服务端，如果不装那就只能访问GIT的服务器了。
-Tortoisegit , 这个工具为Windows用户提">
+<meta name="description" content="本文简单汇总Android中图片加载库的使用，并非深度源码的解析。
+Android-Universal-Image-Loader项目地址：Android-Universal-Image-Loader
+123456789101112131415161718192021// 初始化相关ImageLoader imageLoader = ImageLoader.getInstance(); // Get">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Svn代码库迁移到Git">
-<meta property="og:url" content="http://yoursite.com/2013/12/18/change-svn-to-git/index.html">
+<meta property="og:title" content="Android图片加载库">
+<meta property="og:url" content="http://yoursite.com/2016/09/28/android-github-imageloader/index.html">
 <meta property="og:site_name" content="MS.T Notes">
-<meta property="og:description" content="说明：根据SVN库地址，拉取数据生成一个git本地代码库。用于svn迁移数据到git。GIT客户端与SVN服务器下面是必须要安装的几个软件：
-
-Git-1.7.4, 这个是GIT客户端，可以在GIT的官方网站上下载。
-SVN客户端，只有安装了SVN客户端才能利用Tortoisegit访问SVN服务端，如果不装那就只能访问GIT的服务器了。
-Tortoisegit , 这个工具为Windows用户提">
-<meta property="og:image" content="http://yoursite.com/assert/162347_csMJ_196085.png">
-<meta property="og:updated_time" content="2016-04-08T17:19:27.725Z">
+<meta property="og:description" content="本文简单汇总Android中图片加载库的使用，并非深度源码的解析。
+Android-Universal-Image-Loader项目地址：Android-Universal-Image-Loader
+123456789101112131415161718192021// 初始化相关ImageLoader imageLoader = ImageLoader.getInstance(); // Get">
+<meta property="og:image" content="http://yoursite.com/assert/2016-09-28/overall-design.png">
+<meta property="og:image" content="http://yoursite.com/assert/2016-09-28/uil-flow.png">
+<meta property="og:updated_time" content="2016-09-30T11:52:58.369Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Svn代码库迁移到Git">
-<meta name="twitter:description" content="说明：根据SVN库地址，拉取数据生成一个git本地代码库。用于svn迁移数据到git。GIT客户端与SVN服务器下面是必须要安装的几个软件：
-
-Git-1.7.4, 这个是GIT客户端，可以在GIT的官方网站上下载。
-SVN客户端，只有安装了SVN客户端才能利用Tortoisegit访问SVN服务端，如果不装那就只能访问GIT的服务器了。
-Tortoisegit , 这个工具为Windows用户提">
-<meta name="twitter:image" content="http://yoursite.com/assert/162347_csMJ_196085.png">
+<meta name="twitter:title" content="Android图片加载库">
+<meta name="twitter:description" content="本文简单汇总Android中图片加载库的使用，并非深度源码的解析。
+Android-Universal-Image-Loader项目地址：Android-Universal-Image-Loader
+123456789101112131415161718192021// 初始化相关ImageLoader imageLoader = ImageLoader.getInstance(); // Get">
+<meta name="twitter:image" content="http://yoursite.com/assert/2016-09-28/overall-design.png">
 
 
 
@@ -128,9 +123,9 @@ Tortoisegit , 这个工具为Windows用户提">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2013/12/18/change-svn-to-git/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/28/android-github-imageloader/"/>
 
-  <title> Svn代码库迁移到Git | MS.T Notes </title>
+  <title> Android图片加载库 | MS.T Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -294,7 +289,7 @@ Tortoisegit , 这个工具为Windows用户提">
             
             
               
-                Svn代码库迁移到Git
+                Android图片加载库
               
             
           </h1>
@@ -306,8 +301,8 @@ Tortoisegit , 这个工具为Windows用户提">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-12-18T00:00:00+08:00" content="2013-12-18">
-              2013-12-18
+            <time itemprop="dateCreated" datetime="2016-09-28T00:00:00+08:00" content="2016-09-28">
+              2016-09-28
             </time>
           </span>
 
@@ -320,8 +315,8 @@ Tortoisegit , 这个工具为Windows用户提">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术工具/" itemprop="url" rel="index">
-                    <span itemprop="name">技术工具</span>
+                  <a href="/categories/移动开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动开发</span>
                   </a>
                 </span>
 
@@ -336,8 +331,8 @@ Tortoisegit , 这个工具为Windows用户提">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/12/18/change-svn-to-git/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/18/change-svn-to-git/" itemprop="commentsCount"></span>
+                <a href="/2016/09/28/android-github-imageloader/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/28/android-github-imageloader/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -347,7 +342,7 @@ Tortoisegit , 这个工具为Windows用户提">
 
           
           
-             <span id="/2013/12/18/change-svn-to-git/" class="leancloud_visitors" data-flag-title="Svn代码库迁移到Git">
+             <span id="/2016/09/28/android-github-imageloader/" class="leancloud_visitors" data-flag-title="Android图片加载库">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -369,14 +364,16 @@ Tortoisegit , 这个工具为Windows用户提">
       
 
       
-        <p><strong>说明：根据SVN库地址，拉取数据生成一个git本地代码库。用于svn迁移数据到git。</strong><br><strong>GIT客户端与SVN服务器</strong><br>下面是必须要安装的几个软件：</p>
-<ul>
-<li>Git-1.7.4, 这个是GIT客户端，可以在GIT的官方网站上下载。</li>
-<li>SVN客户端，只有安装了SVN客户端才能利用Tortoisegit访问SVN服务端，如果不装那就只能访问GIT的服务器了。</li>
-<li>Tortoisegit , 这个工具为Windows用户提供了良好的GIT操作界面，而且如果习惯了使用SVN的人几乎没有难度。<br>这几个软件的关系是：Tortoisegit提供了良好的界面操作GIT，底层实际使用Git-1.7.4客户端完成所有GIT功能，并且Tortoisegit依赖SVN客户端来提供将本地GIT管理的数据提交到SVN服务器上的功能。<br>最好按照上面列出的顺序依次安装，否则需要手动配置一些路径。<br>这个时候可以在Windows的右键菜单中发现Git Clone这个选项。通过这个选项就可以把SVN服务器上的数据下载到本地，并由GIT客户端进行管理。<a id="more"></a>
-<img src="/assert/162347_csMJ_196085.png" alt="Alt text"><br>如上图，从SVN克隆数据必须勾选红框中的CheckBox，然后在填写分支名称，登陆用户名等信息。这个对话框上面一半是用于从GIT服务器上克隆已有项目的。<br>这样就可以按照一般GIT客户端的方式在本地管理代码，上传到远端服务器时需要在右键菜单中选择SVN Dcommit命令，就可以把代码提交到SVN服务器上了。<br>注解：填写Url，Directory，勾选上图的红框，不要勾选trunk，tags，branch，填写username，之后填写密码等，就可以了。<br>之后再拉取代码用菜单中的SVN fetch，svn rebase，提交代码用svn dcommit（没试过）。</li>
-</ul>
-<p><strong>参考资料：（上文基本上是扒来的，加上自己的注解）</strong><br><a href="http://www.cnblogs.com/cppguru/archive/2011/06/22/2086996.html" target="_blank" rel="external">从SVN迁移到GIT</a><br><a href="http://sfzhang88.blog.51cto.com/4995876/1198867" target="_blank" rel="external">SVN数据迁移到Git笔记</a><br><a href="http://www.oschina.net/translate/howto_use_git_with_svn" target="_blank" rel="external">如何一起使用 Git 和 SVN</a></p>
+        <p>本文简单汇总Android中图片加载库的使用，并非深度源码的解析。</p>
+<h2 id="Android-Universal-Image-Loader"><a href="#Android-Universal-Image-Loader" class="headerlink" title="Android-Universal-Image-Loader"></a>Android-Universal-Image-Loader</h2><p>项目地址：<a href="https://github.com/nostra13/Android-Universal-Image-Loader" target="_blank" rel="external">Android-Universal-Image-Loader</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 初始化相关</div><div class="line">ImageLoader imageLoader = ImageLoader.getInstance(); // Get singleton instance</div><div class="line">imageLoader.init(ImageLoaderConfiguration.createDefault(BDApplication.instance()));</div><div class="line"></div><div class="line">// 使用方式1：根据uri显示到ImageView上，是否异步要根据option.isSyncLoading</div><div class="line">// Load image, decode it to Bitmap and display Bitmap in ImageView (or any other view </div><div class="line">//  which implements ImageAware interface)</div><div class="line">imageLoader.displayImage(imageUri, imageView);</div><div class="line"></div><div class="line">// 使用方式2：在回调里处理</div><div class="line">// Load image, decode it to Bitmap and return Bitmap to callback</div><div class="line">imageLoader.loadImage(imageUri, new SimpleImageLoadingListener() &#123;</div><div class="line">    @Override</div><div class="line">    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) &#123;</div><div class="line">        // Do whatever you want with Bitmap</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 使用方式3：同步返回bitmap</div><div class="line">// Load image, decode it to Bitmap and return Bitmap synchronously</div><div class="line">Bitmap bmp = imageLoader.loadImageSync(imageUri);</div></pre></td></tr></table></figure>
+<p>另外，可以配置显示图片的样式，设置option的BitmapDisplayer。UIL提供了FadeInBitmapDisplayer渐显样式、SimpleBitmapDisplayer、RoundedBitmapDisplayer、CircleBitmapDisplayer、RoundedVignetteBitmapDisplayer圆角显示颜色会有个渐变的效果 这5中Displayer。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">private ImageLoaderUtil() &#123;</div><div class="line">	// 正常图片</div><div class="line">	optionsNormal = new DisplayImageOptions.Builder()</div><div class="line">		.showImageOnLoading(R.drawable.ic_stub)</div><div class="line">		.showImageForEmptyUri(R.drawable.ic_stub)</div><div class="line">		.showImageOnFail(R.drawable.ic_stub).cacheInMemory(true)</div><div class="line">		.cacheOnDisk(true).considerExifParams(true)</div><div class="line">		.displayer(new SimpleBitmapDisplayer()).build();</div><div class="line">	</div><div class="line">	// 圆角矩形</div><div class="line">	optionsRounded = new DisplayImageOptions.Builder()</div><div class="line">		.showImageOnLoading(R.drawable.ic_stub)</div><div class="line">		.showImageForEmptyUri(R.drawable.ic_stub)</div><div class="line">		.showImageOnFail(R.drawable.ic_stub).cacheInMemory(true)</div><div class="line">		.cacheOnDisk(true).considerExifParams(true)</div><div class="line">		.displayer(new RoundedBitmapDisplayer(10)).build();</div><div class="line">	</div><div class="line">	// 圆圈图片</div><div class="line">	optionsCircle = new DisplayImageOptions.Builder()</div><div class="line">		.showImageOnLoading(R.drawable.ic_stub)</div><div class="line">		.showImageForEmptyUri(R.drawable.ic_stub)</div><div class="line">		.showImageOnFail(R.drawable.ic_stub).cacheInMemory(true)</div><div class="line">		.cacheOnDisk(true).considerExifParams(true)</div><div class="line">		.displayer(new CircleBitmapDisplayer(4)).build();</div><div class="line">	</div><div class="line">	imageLoader = ImageLoader.getInstance();</div><div class="line">	imageLoader.init(ImageLoaderConfiguration.createDefault(BDApplication.instance()));</div><div class="line">	</div><div class="line">	animateFirstListener = new AnimateFirstDisplayListener();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>总体架构图：<br><img src="/assert/2016-09-28/overall-design.png" alt="总体架构图"></p>
+<p>流程图：<br><img src="/assert/2016-09-28/uil-flow.png" alt="总体架构图"></p>
+<p>参考文档：<br><a href="http://a.codekk.com/detail/Android/huxian99/Android%20Universal%20Image%20Loader%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90" target="_blank" rel="external">Android Universal Image Loader 源码分析</a></p>
+<p><strong>参考文章：</strong><br><a href="http://a.codekk.com/detail/Android/huxian99/Android%20Universal%20Image%20Loader%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90" target="_blank" rel="external">Android Universal Image Loader 源码分析</a></p>
 
       
     </div>
@@ -399,7 +396,9 @@ Tortoisegit , 这个工具为Windows用户提">
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag">#Git</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android开源项目/" rel="tag">#Android开源项目</a>
           
         </div>
       
@@ -408,16 +407,16 @@ Tortoisegit , 这个工具为Windows用户提">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2013/12/17/android-not-receive-broadcast/" rel="next" title="Android4.0开机广播">
-                <i class="fa fa-chevron-left"></i> Android4.0开机广播
+              <a href="/2016/09/07/android-doc-generate/" rel="next" title="Android生成帮助文档">
+                <i class="fa fa-chevron-left"></i> Android生成帮助文档
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2013/12/19/parser-json-error/" rel="prev" title="Android2.3解析Json出错">
-                Android2.3解析Json出错 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/29/android-thread/" rel="prev" title="Java线程池相关">
+                Java线程池相关 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -467,8 +466,8 @@ Tortoisegit , 这个工具为Windows用户提">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2013/12/18/change-svn-to-git/"
-           data-title="Svn代码库迁移到Git" data-url="http://yoursite.com/2013/12/18/change-svn-to-git/">
+      <div class="ds-thread" data-thread-key="2016/09/28/android-github-imageloader/"
+           data-title="Android图片加载库" data-url="http://yoursite.com/2016/09/28/android-github-imageloader/">
       </div>
     
   </div>
@@ -559,7 +558,7 @@ Tortoisegit , 这个工具为Windows用户提">
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Universal-Image-Loader"><span class="nav-number">1.</span> <span class="nav-text">Android-Universal-Image-Loader</span></a></li></ol></div>
             
           </div>
         </section>
