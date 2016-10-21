@@ -282,7 +282,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/21/http/" itemprop="url">
+                <a class="post-title-link" href="/2016/10/21/http-protocol/" itemprop="url">
                   计算机网络协议赏析-HTTP(zz)
                 </a>
               
@@ -326,8 +326,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/21/http/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/21/http/" itemprop="commentsCount"></span>
+                <a href="/2016/10/21/http-protocol/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/21/http-protocol/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -337,7 +337,7 @@
 
           
           
-             <span id="/2016/10/21/http/" class="leancloud_visitors" data-flag-title="计算机网络协议赏析-HTTP(zz)">
+             <span id="/2016/10/21/http-protocol/" class="leancloud_visitors" data-flag-title="计算机网络协议赏析-HTTP(zz)">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -360,26 +360,17 @@
 
       
         
-          
-            <p>参考资料：<br><a href="http://blogread.cn/it/article/6838" target="_blank" rel="external">计算机网络协议赏析-HTTP</a><br><a href="http://blogread.cn/it/article/1064?f=sa" target="_blank" rel="external">简明HTTP协议</a><br><a href="http://blogread.cn/it/article/1203?f=sa" target="_blank" rel="external">HTTP 状态代码解释</a></p>
-<p><strong>【最熟悉的陌生人】</strong><br>和TCP/UDP协议比起来，HTTP协议或许更为大家所熟知，因为大家处处都可以看到<a href="http://xxx.com的字样。" target="_blank" rel="external">http://xxx.com的字样。</a><br>但是，真正了解HTTP协议的同学，或许只是少数，还有很多人甚至不知道“404”的含义。<br>而本文，正是让大家来更深入的了解下这位最熟悉的陌生人。</p>
-<p><strong>【HTTP在江湖中的地位】</strong><br>众所周知，Internet四层网络模型(也叫TCP/IP四层模型)包括数据链路层、网络层、传输层和应用层，<br>网络层最著名的协议是IP协议，传输层最著名的协议是TCP协议和UDP协议，而应用层的协议众多，诸如FTP协议、TELNET协议、TFTP协议、POP协议、SMTP协议、DNS协议、SNMP协议，当然还包括了本文的主角HTTP协议。<br>如果说TCP/UDP/IP协议算作幕后的英雄，那毫不夸张的说，HTTP协议则是台前最大腕的明星。</p>
-<p><strong>【HTTP大概是怎样工作的】</strong><br>HTTP，是符合Client/Server模型的，总是Client端来发起请求。整个过程，可以简单分为四步：<br>(1)客户端发起请求，与服务器端完成“TCP三次握手”(TCP三次握手非文本重点知识)<br>(2)客户端向服务器端发出“HTTP请求报文”<br>(3)服务器端在完成内部处理后，向客户端发出“HTTP响应报文”<br>(4)客户端与服务器端完成“TCP四次分手”(TCP四次分手非文本重点知识)<br>而HTTP协议本身是一种无状态的协议，也就是说每一个HTTP报文不依赖于其前面的报文状态。</p>
-<p><strong>【HTTP的URL如何表示】</strong><br>之所以要先讲一下URL，是因为这个知识点在下文中会频繁用到。<br>HTTP协议中的URL主要是用于定位服务器端资源的位置。我们来看下它的语法定义：<br><a href="http://host[:port][path" target="_blank" rel="external">http://host[:port][path</a>]<br>其中：<br>http:// 表示我们要使用HTTP协议；<br>host 表示一个可用的域名或IP地址；<br>port 为可选，表示要请求的端口号，缺省情况下为80<br>path 为可选，表示要请求的资源所在的路径(也叫URI)，缺省情况下为/</p>
-<p><strong>【HTTP请求长什么样儿】</strong><br>我们先来看一个典型的HTTP请求报文长什么样子：<br>(我们用//注释嵌到请求里，让大家更好的理解每一行语句的含义)</p>
-<blockquote>
-<p><strong>第一行叫做请求行(request)，其他的各行都叫做头部行(header)</strong><br>请求行包括三个字段：方法字段、URI字段、HTTP版本字段<br>  这个例子的请求行，是要做这样一件事：用HTTP协议1.1版本，使用GET方法，<br>     向服务端申请pathtopage.html资源<br>  GET pathtopage.html HTTP1.1</p>
-<p><strong>下面都属于头部行 </strong><br>Host用来指定要请求的服务器端主机为roclinux.cn<br>  Host:roclinux.cn<br>Connection:close是要告诉服务器端，我客户端不想使用持久连接，<br>     请服务器端在完成这次请求响应后关闭此连接。虽然这个请求报文中<br>     使用了支持持久连接的HTTP1.1版本，但客户端仍然不想使用持久连接<br>  Connection:close<br>User-agent域则是用来指定当前这个请求报文是由谁产生的，通常来<br>     说，一般这里设置的是用户所使用的浏览器类型。不要小看这个域，一<br>     些用心的站长，会通过这个域来识别客户，并给不同的客户展示资源的<br>     不同版本呢！<br>  User-agent:Mozilla4.0<br>Accept-language域，则是客户端再跟服务器端说“兄弟，如果你那里有<br>     我申请的资源的中文版本，那就把中文版本给我；如果没有中文版本，那<br>     就把你的默认语言版本给我就好了。”<br>  Accept-language:zh-cn<br>看这里，看这里！或许谁也没有注意到这里，这里有一个空行，而且是必<br>     须有这个空行。这是HTTP协议的硬性规定，不要忘记哦 </p>
-</blockquote>
-<p> 下面，用我精心画的一张图，来说明下请求报文的协议格式：</p>
-<p><img src="/assert/2016-10-21-01/HTTP协议-请求报文格式.png" alt="HTTP协议-请求报文格式"><br>HTTP协议-请求报文格式<br>从上面这个图，应该可以很清晰的看出请求报文的具体格式啦。<br><strong>【HTTP请求报文中有哪些方法】</strong><br>HTTP请求方法有很多，我们先走马观花的看看：<br>GET方法：请求某资源<br>POST方法：请求某资源的同时附上一些数据<br>HEAD方法：请求某资源对应的响应报文头<br>PUT方法：上传一个资源<br>DELETE方法：删除一个资源<br>TRACE方法：让服务器回送请求报文，用于调试和排障<br>OPTIONS：请求服务器性能信息<br>CONNECT：预留给代理服务器所用<br><strong>【怎么响应HTTP的请求】</strong><br>在了解完请求报文的格式之后，你是不是想知道HTTP协议是如何响应请求报文的呢？我们来看一个典型的响应报文：</p>
-<blockquote>
-<p>一个响应报文，一般包括三部分，即状态行、头部行、附属体<br>第一行是状态行，包括三个字段：版本字段、状态码字段、原因短语字段<br>  本例中，HTTP协议的响应报文想表达的意思是服务器使用的是HTTP协议1.1版本，<br>     而且找到了客户端所要的资源，且会将响应报文发给客户端，整个过程都很正常<br>  HTTP1.1 200 0K<br>服务器端不会保持住这个连接，而是在回复完这个响应报文之后会断开这个连接<br>  Connectlon:close<br>这里记录了这个响应报文被发送出去的时间点<br>  Date: Thu, 13 Oct 2005 03:17:33 GMT<br>Server域表明这个响应报文是有类Unix操作系统上的Apache服务器发出的，且<br>     Apache的版本是2.0.54<br>  Server: Apache2.0.54 (Unix)<br>用于记录本响应报文中所存的数据的最后修改时间<br>  Last—Modified:Mon,22 Jun 1998 09;23;24 GMT<br>指出数据部分的字节数，即单位Byte<br>  Content—Length:682l<br>指出所包含的数据是HTML文本内容<br>  Content—Type:texthtml<br>看这里，还得看这里，和请求报文类似，这里也有一个空行，不能省哦<br>这里是实际的响应数据<br>  (data data data data …………)</p>
-</blockquote>
-<p>下面，我们同样来看看响应报文的协议格式：<br><img src="/assert/2016-10-21-01/HTTP协议-响应报文格式1.png" alt="HTTP协议-响应报文格式1"><br> HTTP协议-响应报文格式<br><strong>【说说HTTP的状态码】</strong><br>说到HTTP响应报文，就不得不提到HTTP状态码，及原因短语。相信大家看完这一小节后，就会很清楚404代表着什么了。<br>状态码总共只有三位，第一位表示状态类别，共分五种，我们来依次看一下：<br>1xx：是进度通知类状态，意思就是说“请求我已经收到了，或你的请求我正在处理”；<br>2xx：表示“你的请求我已经成功处理了”；<br>3xx：即重定向，也就是服务器告诉客户端“你要的资源搬家了，你到某某地方再去找他吧”；<br>4xx：客户端发来的响应报文里有些错误，比如语法错误或请求的资源不存在等；<br>5xx：服务器端有些问题，已经无法处理完成你的请求了。<br>其实常用的状态码并不多，我们把常见的列举在此：<br>200 OK：客户端请求成功了，客户端要的东西就在响应报文里了；<br>301 Moved Permanently：客户端啊，你要请求的资源已经永久的搬家了，我把他的新地址放到了Location头部域中了；<br>302 Moved Temporarily：客户端啊，你要请求的资源临时有事去别的地方了，我把他的位置放到了Location头部域中了，你可以先去那里找他，不过他应该是会回到他自己的家的；<br>304 Not Modified：客户端啊，你要请求的资源自从上次你请求之后，就再也没有改动过，我想你是应该早就有这个资源了，所以在响应报文的数据部分我也没有再放这个资源。<br>400 Bad Request：客户端发来的请求报文里有语法错误，服务器端实在看不懂了；<br>401 Unauthorized：客户端发来的请求不是合法来源的请求，也就是这个客户端是没有被授权的；<br>403 Forbidden：服务器端顺利收到了客户端的请求，但是因为某些理由，服务器端拒绝为他提供服务；<br>404 Not Found：客户端要请求的资源不存在，八成是资源地址写错了；<br>500 Internal Server Error：很遗憾，服务器不能给你提供服务了，服务器内部出现了不可预知的问题了；<br>502 Bad Gateway：客户端你好，我是请求报文的代理服务器，持有资源的那个服务器在给我发送资源时出问题了；<br>503 Server Unavailable：服务器现在可能是太忙了，暂时不能给你这个客户端提供服务了，或许稍后会恢复。<br><strong>【HTTP版本有几个】</strong><br>最早的HTTP版本是0.9，现在已经很少使用了。<br>而基于0.9版本改进后的是HTTP1.0版本，对应的RFC编号是1945。<br>现在最常用的则是基于1.0版本改进后的HTTP1.1版本，对应的RFC编号是2616，其最大的改进点就是增加了“持久连接”的内容，同时在缓存控制与多级代理方面也有不小的完善。<br>【一些高级用法】<br>1 HTTP1.1中，我们可以在报文中使用Cache-Control域来控制缓存策略；而在HTTP1.0中则可以使用Pragma域来控制。为了确保达到效果，我们往往会在HTTP报文中同时设置Cache-Control:no-cache和Pragma:no-cache<br>2 在请求报文中，我们可以设置Accept头部域来指明客户端希望接受哪些类型的数据，比如Accept:image/gif，则表明客户端希望接收gif图片数据。当然我们可以设置很多种可接受的类型。<br>3 在请求报文中，Accept-Charset则是用来设置客户端希望接受的字符集。<br>4 在请求报文中，Accept-Encoding则是用来指定客户端希望接受的编码类型。<br>5 在请求报文中，Accept-Language是指明客户端希望接受的语言类型，例如Accept-Language:zh-cn，表明客户端希望得到中文的内容<br>6 在请求报文中，If-Modified-Since域用作缓存策略。具体的原理是这样的，浏览器本地会缓存一些数据，包括网页、图片等，而且还会同时存储这些缓存数据在服务器端的最后修改时间(Last-Modified)。当浏览器再向服务器端发起这些数据的请求时，会同时把这些数据的最后修改时间通过If-Modified-Since一起传给服务器端，服务器端一旦看到这个头部域，就会先拿这个时间戳和相应资源的最后修改时间比较下，如果相同，就说明这个资源一直以来都没有改动过，于是服务器端就不用再把这个数据重复的传给客户端了，而是直接在响应报文中返回304即可，避免了重复传输带来的带宽消耗。<br>7 有些同学会感觉疑惑，为什么Last-Modified和If-Modified-Since域都是存储“最后修改时间”的，有啥区别呢。他俩的区别在于，Last-Modified域是响应报文中使用的，由服务器端发给客户端的；而If-Modified-Since则是用在请求报文中的，由客户端发给服务器端的。这两者都是用绝对时间来表示的，所以存在时间同步的问题。那有没有更好的解决办法呢，请继续往下看：)<br>8 为大家隆重推出Etags和If-None-Match这一对兄弟，他俩的关系和“Last-Modified/If-Modified-Since”的关系一样，Etags(Entity Tags)是用于响应报文中的，而If-None-Match是用于请求报文中的。这对兄弟的好处在于，他们不是以绝对时间来判断数据是否被修改过，而是通过数据的某个属性值来判断，例如数据的MD5值，这样就可以很好的避免时间不同步的问题了。(除了If-None-Match外，请求报文的头部域中还可以用If-Match、If-Range来表示希望获取的Etag值)<br>9 在响应报文中，可以使用Location头部域来实现重定向，比如更换了域名之后。<br>10 在HTTP协议里，除了Etags/if-None-Match，Last-Modified/If-Modified-Since外，还有两对这样的兄弟，其一是Server/User-Agent，Server是服务器端用来亮明身份的，而User-Agent是客户端用来亮明身份的；另一对是Set-Cookie和Cookie，Set-Cookie用于服务器端向客户端设置cookie的，而Cookie则是客户端告诉服务器端自己的cookie的。<br>11 在响应报文中，服务器端可以使用Expires域来告诉客户端最多缓存这个数据到什么时间，如果超过这个时间点的话，客户端就不要再缓存这个数据了，而是向服务器端重新发起新的请求。<br>12 在响应报文中，服务器端可以使用Set-Cookie头部域向客户端设置cookie。其语法很简单，就是由多个name=value组成的，由分号间隔。例如：<br>Set-Cookie: ASPSESSIONIDQAQBQQQB=BEJCDGKADEDJKLKKAJEOIMMH; path=/<br>13 在响应报文中，X-Powered-By头部域表示服务器端使用到的技术名称，例如X-Powered-By: ASP.NET<br>【结语】<br>随着你对HTTP协议掌握的越来越深入，你会发现HTTP协议里蕴藏了很多智慧和技巧，如果你和我一样是一名devops的话，对HTTP的了解和深入是必不可少的。<br>谢谢！</p>
-<p><strong>参考文章：</strong><br><a href="http://www.cnblogs.com/wxgblogs/p/5641405.html" target="_blank" rel="external">HTTP协议详解</a></p>
-
-          
+          <p><strong>参考资料：</strong><br><a href="http://www.cnblogs.com/wxgblogs/p/5641405.html">HTTP协议详解</a><br><a href="http://blogread.cn/it/article/6838">计算机网络协议赏析-HTTP</a><br><a href="http://blogread.cn/it/article/1064?f=sa">简明HTTP协议</a><br><a href="http://blogread.cn/it/article/1203?f=sa">HTTP 状态代码解释</a></p>
+<h2 id="【最熟悉的陌生人】"><a href="#【最熟悉的陌生人】" class="headerlink" title="【最熟悉的陌生人】"></a><strong>【最熟悉的陌生人】</strong></h2><p>和TCP/UDP协议比起来，HTTP协议或许更为大家所熟知，因为大家处处都可以看到<a href="http://xxx.com的字样。">http://xxx.com的字样。</a><br>但是，真正了解HTTP协议的同学，或许只是少数，还有很多人甚至不知道“404”的含义。<br>而本文，正是让大家来更深入的了解下这位最熟悉的陌生人。</p>
+<h2 id="【HTTP在江湖中的地位】"><a href="#【HTTP在江湖中的地位】" class="headerlink" title="【HTTP在江湖中的地位】"></a><strong>【HTTP在江湖中的地位】</strong></h2><p>众所周知，Internet四层网络模型(也叫TCP/IP四层模型)包括数据链路层、网络层、传输层和应用层，<br>网络层最著名的协议是IP协议，传输层最著名的协议是TCP协议和UDP协议，而应用层的协议众多，诸如FTP协议、TELNET协议、TFTP协议、POP协议、SMTP协议、DNS协议、SNMP协议，当然还包括了本文的主角HTTP协议。<br>如果说TCP/UDP/IP协议算作幕后的英雄，那毫不夸张的说，HTTP协议则是台前最大腕的明星。</p>
+<h2 id="【HTTP大概是怎样工作的】"><a href="#【HTTP大概是怎样工作的】" class="headerlink" title="【HTTP大概是怎样工作的】"></a><strong>【HTTP大概是怎样工作的】</strong></h2><p>HTTP，是符合Client/Server模型的，总是Client端来发起请求。整个过程，可以简单分为四步：<br>(1)客户端发起请求，与服务器端完成“TCP三次握手”(TCP三次握手非文本重点知识)<br>(2)客户端向服务器端发出“HTTP请求报文”<br>(3)服务器端在完成内部处理后，向客户端发出“HTTP响应报文”<br>(4)客户端与服务器端完成“TCP四次分手”(TCP四次分手非文本重点知识)<br>而HTTP协议本身是一种无状态的协议，也就是说每一个HTTP报文不依赖于其前面的报文状态。</p>
+<h2 id="【HTTP的URL如何表示】"><a href="#【HTTP的URL如何表示】" class="headerlink" title="【HTTP的URL如何表示】"></a><strong>【HTTP的URL如何表示】</strong></h2><p>之所以要先讲一下URL，是因为这个知识点在下文中会频繁用到。<br>HTTP协议中的URL主要是用于定位服务器端资源的位置。我们来看下它的语法定义：<br><a href="http://host[:port][path">http://host[:port][path</a>]<br>其中：<br>http:// 表示我们要使用HTTP协议；<br>host 表示一个可用的域名或IP地址；<br>port 为可选，表示要请求的端口号，缺省情况下为80<br>path 为可选，表示要请求的资源所在的路径(也叫URI)，缺省情况下为/</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">schema://host[:port#]/path/.../[?query-string][#anchor]</div><div class="line">scheme:指定低层使用的协议(例如：http, https, ftp)</div><div class="line">host:HTTP服务器的IP地址或者域名</div><div class="line">port#:HTTP服务器的默认端口是80，这种情况下端口号可以省略。如果使用了别的端口，必须指明，例如 http://www.cnblogs.com:8080/</div><div class="line">path :访问资源的路径</div><div class="line">query-string:发送给http服务器的数据</div><div class="line">anchor-:锚</div><div class="line"></div><div class="line">URL 的一个例子</div><div class="line">http://www.mywebsite.com/sj/test/test.aspx?name=sviergn&amp;x=true#stuff</div><div class="line">Schema:                 http</div><div class="line">host:                   www.mywebsite.com</div><div class="line">path:                   /sj/test/test.aspx</div><div class="line">Query String:           name=sviergn&amp;x=true</div><div class="line">Anchor:                 stuff</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/21/http-protocol/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
