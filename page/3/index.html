@@ -282,6 +282,139 @@
             
               
                 
+                <a class="post-title-link" href="/2014/09/08/modify-android-keystore-alias/" itemprop="url">
+                  修改Android签名密码-别名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-09-08T00:00:00+08:00" content="2014-09-08">
+              2014-09-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/移动开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/09/08/modify-android-keystore-alias/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/08/modify-android-keystore-alias/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2014/09/08/modify-android-keystore-alias/" class="leancloud_visitors" data-flag-title="修改Android签名密码-别名">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>之前在测试Eclipse ADT的Custom debug keystore自定义调试证书的时候，发过一篇关于调试证书规格的博文 <strong>“Eclipse ADT的Custom debug keystore所需证书规格”:<a href="http://blog.k-res.net/archives/1229.html">http://blog.k-res.net/archives/1229.html</a> </strong>，提到过自定义调试证书的密码和alias命名以及alias密码都是有规矩的。<br>其实Android应用开发接入各种SDK时会发现，有很多SDK是需要靠package name和keystore的指纹hash来识别的（百度地图SDK、Facebook SDK等等…），这样如果使用默认自动生成的debug keystore的话就会给开发调试工作带来一些麻烦。这时可以通过修改正式的release keystore，生成一份“遵守规矩”的临时自定义调试证书给开发时用，就方便多了。</p>
+<p>具体方法如下：<br>1.首先当然是先复制一份正式证书出来作为要修改为的临时调试证书。<br>2.修改keystore密码的命令(keytool为JDK带的命令行工具)：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -storepasswd -keystore my.keystore</div></pre></td></tr></table></figure></p>
+<p>其中，my.keystore是复制出来的证书文件，执行后会提示输入证书的当前密码，和新密码以及重复新密码确认。这一步需要将密码改为android。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/09/08/modify-android-keystore-alias/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/06/26/android-touch-event-consume/" itemprop="url">
                   Android点击事件分发
                 </a>
@@ -769,144 +902,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/12/20/android-wechat-shere/" itemprop="url">
-                  Android开发-微信分享功能
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-12-20T00:00:00+08:00" content="2013-12-20">
-              2013-12-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/移动开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动开发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/12/20/android-wechat-shere/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/20/android-wechat-shere/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2013/12/20/android-wechat-shere/" class="leancloud_visitors" data-flag-title="Android开发-微信分享功能">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在你的app应用里增加微信分享的功能，可以分享给好友、朋友圈。<br>首先，看官方文档这是必须的：<br><a href="http://open.weixin.qq.com/document/gettingstart/android/?lang=zh_CN">微信Android终端SDK新手使用指南</a><br>官方文档已经介绍的很详细了，不过有一些地方，我们在开发的时候需要注意。说明以下两块：</p>
-<h2 id="微信SDK-Sample-Demo源码-build"><a href="#微信SDK-Sample-Demo源码-build" class="headerlink" title="微信SDK Sample Demo源码 build"></a><a href="http://open.weixin.qq.com/download/sdk/wechat_sdk_sample_android.zip">微信SDK Sample Demo源码</a> build</h2><p>Demo代码目录下有一个debug.keystore文件，在build的时候按照这个来签名，demo编出来的app才能成功分享到微信。<br>修改android默认签名文件见下图：windown-&gt;preferences<br><img src="/assert/20212244_YiMb.png" alt="ttt"></p>
-<h2 id="我们自己开发"><a href="#我们自己开发" class="headerlink" title="我们自己开发"></a>我们自己开发</h2>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/12/20/android-wechat-shere/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -947,7 +947,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

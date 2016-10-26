@@ -282,6 +282,141 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/28/android-github-imageloader/" itemprop="url">
+                  Android图片加载库、网络框架
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-28T00:00:00+08:00" content="2016-09-28">
+              2016-09-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/移动开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/28/android-github-imageloader/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/28/android-github-imageloader/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/28/android-github-imageloader/" class="leancloud_visitors" data-flag-title="Android图片加载库、网络框架">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本文简单汇总Android中图片加载库的使用，并非深度源码的解析。</p>
+<h2 id="Android-Universal-Image-Loader"><a href="#Android-Universal-Image-Loader" class="headerlink" title="Android-Universal-Image-Loader"></a>Android-Universal-Image-Loader</h2><p>项目地址：<a href="https://github.com/nostra13/Android-Universal-Image-Loader">Android-Universal-Image-Loader</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 初始化相关</div><div class="line">ImageLoader imageLoader = ImageLoader.getInstance(); // Get singleton instance</div><div class="line">imageLoader.init(ImageLoaderConfiguration.createDefault(BDApplication.instance()));</div><div class="line"></div><div class="line">// 使用方式1：根据uri显示到ImageView上，是否异步要根据option.isSyncLoading</div><div class="line">// Load image, decode it to Bitmap and display Bitmap in ImageView (or any other view </div><div class="line">//  which implements ImageAware interface)</div><div class="line">imageLoader.displayImage(imageUri, imageView);</div><div class="line"></div><div class="line">// 使用方式2：在回调里处理</div><div class="line">// Load image, decode it to Bitmap and return Bitmap to callback</div><div class="line">imageLoader.loadImage(imageUri, new SimpleImageLoadingListener() &#123;</div><div class="line">    @Override</div><div class="line">    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) &#123;</div><div class="line">        // Do whatever you want with Bitmap</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 使用方式3：同步返回bitmap</div><div class="line">// Load image, decode it to Bitmap and return Bitmap synchronously</div><div class="line">Bitmap bmp = imageLoader.loadImageSync(imageUri);</div></pre></td></tr></table></figure>
+<p>另外，可以配置显示图片的样式，设置option的BitmapDisplayer。UIL提供了FadeInBitmapDisplayer渐显样式、SimpleBitmapDisplayer、RoundedBitmapDisplayer、CircleBitmapDisplayer、RoundedVignetteBitmapDisplayer圆角显示颜色会有个渐变的效果 这5中Displayer。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">private ImageLoaderUtil() &#123;</div><div class="line">	// 正常图片</div><div class="line">	optionsNormal = new DisplayImageOptions.Builder()</div><div class="line">		.showImageOnLoading(R.drawable.ic_stub)</div><div class="line">		.showImageForEmptyUri(R.drawable.ic_stub)</div><div class="line">		.showImageOnFail(R.drawable.ic_stub).cacheInMemory(true)</div><div class="line">		.cacheOnDisk(true).considerExifParams(true)</div><div class="line">		.displayer(new SimpleBitmapDisplayer()).build();</div><div class="line">	</div><div class="line">	// 圆角矩形</div><div class="line">	optionsRounded = new DisplayImageOptions.Builder()</div><div class="line">		.showImageOnLoading(R.drawable.ic_stub)</div><div class="line">		.showImageForEmptyUri(R.drawable.ic_stub)</div><div class="line">		.showImageOnFail(R.drawable.ic_stub).cacheInMemory(true)</div><div class="line">		.cacheOnDisk(true).considerExifParams(true)</div><div class="line">		.displayer(new RoundedBitmapDisplayer(10)).build();</div><div class="line">	</div><div class="line">	// 圆圈图片</div><div class="line">	optionsCircle = new DisplayImageOptions.Builder()</div><div class="line">		.showImageOnLoading(R.drawable.ic_stub)</div><div class="line">		.showImageForEmptyUri(R.drawable.ic_stub)</div><div class="line">		.showImageOnFail(R.drawable.ic_stub).cacheInMemory(true)</div><div class="line">		.cacheOnDisk(true).considerExifParams(true)</div><div class="line">		.displayer(new CircleBitmapDisplayer(4)).build();</div><div class="line">	</div><div class="line">	imageLoader = ImageLoader.getInstance();</div><div class="line">	imageLoader.init(ImageLoaderConfiguration.createDefault(BDApplication.instance()));</div><div class="line">	</div><div class="line">	animateFirstListener = new AnimateFirstDisplayListener();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/28/android-github-imageloader/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/07/android-doc-generate/" itemprop="url">
                   Android生成帮助文档
                 </a>
@@ -794,144 +929,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/09/08/modify-android-keystore-alias/" itemprop="url">
-                  修改Android签名密码-别名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-09-08T00:00:00+08:00" content="2014-09-08">
-              2014-09-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/移动开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动开发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/09/08/modify-android-keystore-alias/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/08/modify-android-keystore-alias/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/09/08/modify-android-keystore-alias/" class="leancloud_visitors" data-flag-title="修改Android签名密码-别名">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>之前在测试Eclipse ADT的Custom debug keystore自定义调试证书的时候，发过一篇关于调试证书规格的博文 <strong>“Eclipse ADT的Custom debug keystore所需证书规格”:<a href="http://blog.k-res.net/archives/1229.html">http://blog.k-res.net/archives/1229.html</a> </strong>，提到过自定义调试证书的密码和alias命名以及alias密码都是有规矩的。<br>其实Android应用开发接入各种SDK时会发现，有很多SDK是需要靠package name和keystore的指纹hash来识别的（百度地图SDK、Facebook SDK等等…），这样如果使用默认自动生成的debug keystore的话就会给开发调试工作带来一些麻烦。这时可以通过修改正式的release keystore，生成一份“遵守规矩”的临时自定义调试证书给开发时用，就方便多了。</p>
-<p>具体方法如下：<br>1.首先当然是先复制一份正式证书出来作为要修改为的临时调试证书。<br>2.修改keystore密码的命令(keytool为JDK带的命令行工具)：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -storepasswd -keystore my.keystore</div></pre></td></tr></table></figure></p>
-<p>其中，my.keystore是复制出来的证书文件，执行后会提示输入证书的当前密码，和新密码以及重复新密码确认。这一步需要将密码改为android。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/08/modify-android-keystore-alias/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -972,7 +974,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
