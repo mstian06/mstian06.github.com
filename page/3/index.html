@@ -282,139 +282,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/28/Android-view-touch-event/" itemprop="url">
-                  聊聊Android点击事件传递
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-28T00:00:00+08:00" content="2016-07-28">
-              2016-07-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/移动开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动开发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/28/Android-view-touch-event/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/28/Android-view-touch-event/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/28/Android-view-touch-event/" class="leancloud_visitors" data-flag-title="聊聊Android点击事件传递">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>Android系统中，每个Activity的用户界面都是有View和ViewGroup对象来组成的。<br><img src="/assert/2016-07-28-01/viewgroup.png" alt="ViewGroup"></p>
-<p>那么当在界面上做了点击之后，点击事件是如何传递并处理的呢？<br>首先点击事件处理相关的有三个接口函数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//分派事件</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span></div><div class="line"></div><div class="line"><span class="comment">//拦截事件，ViewGroup类中的源码实现就是&#123;return false;&#125;</span></div><div class="line">表示不拦截该事件，事件将向下传递（传递给其子View）；</div><div class="line">若手动重写该方法，使其返回<span class="keyword">true</span>则表示拦截，事件将终止向下传递，</div><div class="line">事件由当前ViewGroup类来处理，就是调用该类的<span class="title">onTouchEvent</span><span class="params">()</span>方法</div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span></div><div class="line"></div><div class="line"><span class="comment">//处理事件，返回true则表示该View能处理该事件，事件将</span></div><div class="line">终止向上传递（传递给其父View）；返回<span class="keyword">false</span>表示不能处理，</div><div class="line">则把事件传递给其父View的<span class="title">onTouchEvent</span><span class="params">()</span>方法来处理</div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span></span></div></pre></td></tr></table></figure></p>
-<p>只有ViewGroup才有onInterceptTouchEvent这个方法，可以向下拦截事件的传递。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/28/Android-view-touch-event/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2014/09/08/modify-android-keystore-alias/" itemprop="url">
                   修改Android签名密码-别名
                 </a>
@@ -903,6 +770,138 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/12/26/android-swiftp-server/" itemprop="url">
+                  Android开发-Swiftp服务端移植
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-12-26T00:00:00+08:00" content="2013-12-26">
+              2013-12-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/移动开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/12/26/android-swiftp-server/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/26/android-swiftp-server/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2013/12/26/android-swiftp-server/" class="leancloud_visitors" data-flag-title="Android开发-Swiftp服务端移植">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>swiftp是一个开源的ftp server，源码可以从下面地址拉。</strong><br>Google code:<a href="http://code.google.com/p/swiftp/downloads/list">http://code.google.com/p/swiftp/downloads/list</a><br>GitHub:<a href="https://github.com/ppareit/swiftp">https://github.com/ppareit/swiftp</a></p>
+<p>自己的需求是将ftp server移植到自己的app中，使用USB数据线管理手机上的文件。其实google code链接源码中已经包含了一个完整的android app（github链接的源码貌似有点不同）。<br>这里只是记录一下调试的过程，将源码import成android project之后运行，有以下几个注意的地方：<br>1.源码default.java中<br>public static final boolean release = true;//可以改成false打开log的开关，方便调试。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/12/26/android-swiftp-server/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -948,7 +947,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -956,7 +955,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -965,7 +964,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
