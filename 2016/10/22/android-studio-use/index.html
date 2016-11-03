@@ -85,17 +85,23 @@
 
 
 <meta name="description" content="快捷键类关系集成图：F4
+其他今天用android studio来写代码，然后在代码中加了中文注释导致无法编译：提示错误：“ Gradle: 警告:编码 GBK 的不可映射字符”。解决办法：在项目下的build.gradle下添加以下代码即可解决
+tasks.withType(Compile) {    options.encoding = “UTF-8”}
 参考文章：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Studio使用相关">
 <meta property="og:url" content="http://yoursite.com/2016/10/22/android-studio-use/index.html">
 <meta property="og:site_name" content="MS.T Notes">
 <meta property="og:description" content="快捷键类关系集成图：F4
+其他今天用android studio来写代码，然后在代码中加了中文注释导致无法编译：提示错误：“ Gradle: 警告:编码 GBK 的不可映射字符”。解决办法：在项目下的build.gradle下添加以下代码即可解决
+tasks.withType(Compile) {    options.encoding = “UTF-8”}
 参考文章：">
-<meta property="og:updated_time" content="2016-10-22T13:38:51.984Z">
+<meta property="og:updated_time" content="2016-11-03T06:43:05.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio使用相关">
 <meta name="twitter:description" content="快捷键类关系集成图：F4
+其他今天用android studio来写代码，然后在代码中加了中文注释导致无法编译：提示错误：“ Gradle: 警告:编码 GBK 的不可映射字符”。解决办法：在项目下的build.gradle下添加以下代码即可解决
+tasks.withType(Compile) {    options.encoding = “UTF-8”}
 参考文章：">
 
 
@@ -359,6 +365,8 @@
 
       
         <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>类关系集成图：F4</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>今天用android studio来写代码，然后在代码中加了中文注释导致无法编译：提示错误：“ Gradle: 警告:编码 GBK 的不可映射字符”。<br>解决办法：<br>在项目下的build.gradle下添加以下代码即可解决</p>
+<p>tasks.withType(Compile) {<br>    options.encoding = “UTF-8”<br>}</p>
 <p><strong>参考文章：</strong></p>
 
       
@@ -496,7 +504,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -504,7 +512,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -513,7 +521,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -542,7 +550,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">1.</span> <span class="nav-text">快捷键</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">1.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">2.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
           </div>
         </section>
