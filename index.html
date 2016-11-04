@@ -282,6 +282,137 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/27/android-annotation/" itemprop="url">
+                  Java注解相关
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-27T00:00:00+08:00" content="2016-10-27">
+              2016-10-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/27/android-annotation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/27/android-annotation/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/27/android-annotation/" class="leancloud_visitors" data-flag-title="Java注解相关">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="编译时注解"><a href="#编译时注解" class="headerlink" title="编译时注解"></a>编译时注解</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.shansun.seri.json;  </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsonSerialize</span> <span class="keyword">implements</span> <span class="title">Serialize</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SerializerUnit4Map</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">String canonicalName = SerializerUnit4Map.class.getCanonicalName();  </div><div class="line">System.out.println(canonicalName);  </div><div class="line">String name = SerializerUnit4Map.class.getName();  </div><div class="line">System.out.println(name);  </div><div class="line">String simpleName = SerializerUnit4Map.class.getSimpleName();  </div><div class="line">System.out.println(simpleName);  </div><div class="line">输出为</div><div class="line">com.shansun.seri.json.JsonSerialize.SerializerUnit4Map  </div><div class="line">com.shansun.seri.json.JsonSerialize$SerializerUnit4Map  </div><div class="line">SerializerUnit4Map</div></pre></td></tr></table></figure>
+<h2 id="运行时注解"><a href="#运行时注解" class="headerlink" title="运行时注解"></a>运行时注解</h2><p><a href="http://blog.csdn.net/lmj623565791/article/details/39269193" target="_blank" rel="external">Android 进阶 教你打造 Android 中的 IOC 框架 【ViewInject】 （上）</a> ， <a href="http://blog.csdn.net/lmj623565791/article/details/39275847" target="_blank" rel="external">下</a></p>
+<p><strong>参考文章：</strong><br><a href="http://www.race604.com/annotation-processing/" target="_blank" rel="external">Java注解处理器</a> ，<a href="https://github.com/sockeqwe/annotationprocessing101/tree/master/factory" target="_blank" rel="external">相关代码</a><br><a href="http://www.septenary.cn/2015/12/19/AndroidSutdio-%E7%BC%96%E8%AF%91%E6%97%B6%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%BA%90%E4%BB%A3%E7%A0%81/" target="_blank" rel="external">AndroidSutdio-编译时自动生成源代码</a> ，<a href="https://github.com/Ryfthink/AnnotationProcessor" target="_blank" rel="external">相关代码</a><br><a href="https://developer.android.com/studio/write/annotations.html" target="_blank" rel="external">android-develper</a><br><a href="http://a.codekk.com/detail/Android/Trinea/%E5%85%AC%E5%85%B1%E6%8A%80%E6%9C%AF%E7%82%B9%E4%B9%8B%20Java%20%E6%B3%A8%E8%A7%A3%20Annotation" target="_blank" rel="external">公共技术点之 Java 注解 Annotation</a><br><a href="https://github.com/mengdd/AndroidButterKnifeSample" target="_blank" rel="external">AndroidButterKnifeSample</a><br><a href="http://www.tuicool.com/articles/3A7vQ3" target="_blank" rel="external">是否有必要在Android项目中使用IOC框架</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/26/android-https/" itemprop="url">
                   Android https相关
                 </a>
@@ -792,137 +923,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/29/android-thread/" itemprop="url">
-                  Java线程池相关
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-29T00:00:00+08:00" content="2016-09-29">
-              2016-09-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/移动开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动开发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/29/android-thread/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/29/android-thread/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/29/android-thread/" class="leancloud_visitors" data-flag-title="Java线程池相关">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本文简单介绍Android中线程池使用，相关源码在android.java中的 <code>java.util.concurrent</code> 包中。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newCachedThreadPool</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">0</span>, Integer.MAX_VALUE,</div><div class="line">                                  <span class="number">60L</span>, TimeUnit.SECONDS,</div><div class="line">                                  <span class="keyword">new</span> SynchronousQueue&lt;Runnable&gt;());</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newFixedThreadPool</span><span class="params">(<span class="keyword">int</span> nThreads)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(nThreads, nThreads,</div><div class="line">                                  <span class="number">0L</span>, TimeUnit.MILLISECONDS,</div><div class="line">                                  <span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;());</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//创建一个定长线程池，支持定时及周期性任务执行。</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ScheduledExecutorService <span class="title">newScheduledThreadPool</span><span class="params">(<span class="keyword">int</span> corePoolSize)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ScheduledThreadPoolExecutor(corePoolSize);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newSingleThreadExecutor</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> FinalizableDelegatedExecutorService</div><div class="line">        (<span class="keyword">new</span> ThreadPoolExecutor(<span class="number">1</span>, <span class="number">1</span>,</div><div class="line">                                <span class="number">0L</span>, TimeUnit.MILLISECONDS,</div><div class="line">                                <span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;()));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>参考文章：</strong><br><a href="http://www.trinea.cn/android/java-android-thread-pool/" target="_blank" rel="external">Java线程池</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -968,7 +968,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -976,7 +976,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -985,7 +985,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
